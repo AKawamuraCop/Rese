@@ -1,0 +1,46 @@
+@extends('layouts.app')
+
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/auth/register.css') }}">
+@endsection
+
+@section('content')
+<div class="register-form">
+    <h2 class="register-form__heading content__heading">Registration</h2>
+    <div class="register-form__inner">
+        <form class="register-form__form" action="/register" method="post">
+            @csrf
+            <div class="register-from__group">
+                <i class="fa fa-user"></i><input class="register-form__input" type="text" name="name" id="name" placeholder="Username">
+                <p class="register-form__error-message">
+                    @error('name')
+                    {{ $message }}
+                    @enderror
+                </p>
+            </div>
+            <div class="register-from__group">
+                <i class="fa fa-envelope"></i><input class="register-form__input" type="mail" name="email" id="email" placeholder="Email">
+                <p class="register-form__error-message">
+                    @error('email')
+                    {{ $message }}
+                    @enderror
+                </p>
+            </div>
+            <div class="register-from__group">
+                <i class="fa fa-lock"></i><input class="register-form__input" type="password" name="password" placeholder="Password">
+                <p class="register-form__error-message">
+                    @error('password')
+                    {{ $message }}
+                    @enderror
+                </p>
+            </div>
+            <div class="register-from__group">
+                <input class="register-form__input" type="password" name="password_confirmation" placeholder="Confirmed">
+            </div>
+            <div class="form__btn">
+                <input class="register-form__btn btn" type="submit" value="登録">
+            </div>
+        </form>
+    </div>
+</div>
+@endsection

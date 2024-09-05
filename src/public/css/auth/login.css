@@ -1,0 +1,105 @@
+.login-form {
+    max-width: 450px;
+    /* フォームの最大幅を設定 */
+    margin: 50px auto;
+    /* 上下の余白を設定し、中央に配置 */
+    background-color: #fff;
+    /* 背景色を白に設定 */
+    border-radius: 5px;
+    /* 角を丸くする */
+    box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.31);
+    /* ボックスの影を設定 */
+}
+
+.login-form__heading {
+    background-color: #007bff;
+    /* ヘッダー部分の背景色を設定 */
+    color: #fff;
+    /* テキストの色を白に設定 */
+    padding: 15px;
+    /* 内側の余白を設定 */
+    margin: 0;
+    /* ヘッダー部分の外側の余白を設定 */
+    text-align: left;
+    /* テキストを左揃えにする */
+    border-top-left-radius: 5px;
+    /* ヘッダーの左上角を丸くする */
+    border-top-right-radius: 5px;
+    /* ヘッダーの右上角を丸くする */
+}
+
+.login-form__inner {
+    padding: 20px;
+    /* 内側の余白を設定 */
+}
+
+.login-from__group {
+    margin-bottom: 15px;
+    /* 各入力グループの下部の余白を設定 */
+}
+
+.login-form__input {
+    width: calc(100% - 40px);
+    /* 入力フィールドの幅を調整 */
+    margin-left: 10px;
+    padding: 5px;
+    /* 内側の余白を設定 */
+    border: none;
+    /* ボーダーを削除 */
+    border-bottom: 2px solid #ccc;
+    /* 下部にボーダーを設定 */
+    outline: none;
+    /* アウトラインを削除 */
+    margin-top: 5px;
+    /* 上部の余白を設定 */
+}
+
+.login-form__input::placeholder {
+    color: #999;
+    /* プレースホルダーのテキスト色を設定 */
+}
+
+.form__btn {
+    text-align: right;
+    /* ボタンを右寄せにする */
+    margin-top: 20px;
+    /* ボタンの上部に余白を追加 */
+}
+
+.login-form__btn {
+    width: 80px;
+    margin-right: 20px;
+    /* ボタンの幅を100%に設定 */
+    padding: 5px 10px;
+    /* 内側の余白を設定 */
+    background-color: #007bff;
+    /* ボタンの背景色を設定 */
+    color: white;
+    /* テキストの色を白に設定 */
+    border: none;
+    /* ボーダーを削除 */
+    border-radius: 5px;
+    /* 角を丸くする */
+    cursor: pointer;
+    /* マウスカーソルをポインタに変更 */
+}
+
+.login-form__btn:hover {
+    background-color: #0056b3;
+    /* ホバー時の背景色を変更 */
+}
+
+.login-form__error-message {
+    color: red;
+    /* エラーメッセージのテキスト色を赤に設定 */
+    font-size: 0.9em;
+    /* エラーメッセージのフォントサイズを設定 */
+    margin-top: 5px;
+    /* 上部の余白を設定 */
+}
+
+.fa {
+    color: gray;
+    font-size: 20px;
+    vertical-align: bottom
+}
