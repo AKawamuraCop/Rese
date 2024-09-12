@@ -5,13 +5,18 @@
 @endsection
 
 @section('content')
+@if (session('result'))
+<div class="flash_message">
+  {{ session('result') }}
+</div>
+@endif
 <div class="register-form">
     <h2 class="register-form__heading content__heading">Registration</h2>
     <div class="register-form__inner">
         <form class="register-form__form" action="/register" method="post">
             @csrf
             <div class="register-from__group">
-                <i class="fa fa-user"></i><input class="register-form__input" type="text" name="name" id="name" placeholder="Username">
+                <i class="fa fa-user"></i><input class="register-form__input" type="text" name="name" value="{{ old('name') }}" placeholder="Username">
                 <p class="register-form__error-message">
                     @error('name')
                     {{ $message }}
@@ -19,7 +24,7 @@
                 </p>
             </div>
             <div class="register-from__group">
-                <i class="fa fa-envelope"></i><input class="register-form__input" type="mail" name="email" id="email" placeholder="Email">
+                <i class="fa fa-envelope"></i><input class="register-form__input" type="mail" name="email" value="{{ old('email') }}" placeholder="Email">
                 <p class="register-form__error-message">
                     @error('email')
                     {{ $message }}

@@ -5,13 +5,18 @@
 @endsection
 
 @section('content')
+@if (session('result'))
+<div class="flash_message">
+  {{ session('result') }}
+</div>
+@endif
 <div class="login-form">
     <h2 class="login-form__heading content__heading">Login</h2>
     <div class="login-form__inner">
         <form class="login-form__form" action="/login" method="post">
             @csrf
             <div class="login-from__group">
-                <i class="fa fa-envelope"></i><input class="login-form__input" type="email" name="email" id="email" placeholder="Email">
+                <i class="fa fa-envelope"></i><input class="login-form__input" type="email" name="email" value="{{ old('email') }}" placeholder="Email">
                 <p class="login-form__error-message">
                     @error('email')
                     {{ $message }}
