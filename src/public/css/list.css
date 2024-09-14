@@ -1,3 +1,57 @@
+.search-bar {
+    display: flex;
+    justify-content: right;
+    padding: 20px 20px;
+    margin-right:30px;
+}
+.search-bar-box{
+    background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 600px;
+        text-align: center;
+        overflow: hidden;
+}
+.search-form {
+    display: flex;
+    width: 80%; /* 画像に基づいて調整 */
+    align-items: center;
+    justify-content: space-between; /* 要素間に均等な間隔を設定 */
+}
+
+.search-dropdown {
+    padding: 10px;
+    margin-right: 5px;
+    border: none;
+    border-radius: 5px;
+    width: 50%; /* ドロップダウンの幅を調整 */
+
+}
+
+.search-input-container {
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 5px;
+    background: white;
+    width: 100%;
+    padding: 0 10px;
+}
+
+.search-icon {
+    color: #ccc;
+    margin-right: 5px;
+}
+
+.search-input {
+    flex-grow: 1;
+    padding: 10px 5px;
+    border: none;
+    outline: none;
+    width: calc(100% - 30px);
+    /* アイコンのスペースを考慮 */
+}
+
 .restaurant-list {
     display: flex;
     flex-wrap: wrap;
@@ -10,9 +64,29 @@
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 320px;
     text-align: center;
     overflow: hidden;
+}
+
+.restaurant-info {
+    text-align: left;
+    /* 左寄せ */
+    padding: 15px;
+}
+
+.restaurant-title {
+    font-size: 1.8rem;
+    /* レストラン名を大きめに */
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.tag {
+    font-size: 0.9rem;
+    /* ハッシュタグを小さめに */
+    color: #666;
+    margin-right: 5px;
 }
 
 .restaurant-card__image {
@@ -22,20 +96,21 @@
 }
 
 .restaurant-card__name {
-    padding: 15px;
+    padding: 5px;
     font-size: 1.5rem;
     color: #333;
 }
 
 .details-button {
     display: inline-block;
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        padding: 5px 10px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
 }
 
 .details-button:hover {
