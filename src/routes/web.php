@@ -34,6 +34,8 @@ Route::post('/login', [AuthController::class,'postLogin']);
 Route::middleware('auth','verified')->group(function(){
     Route::get('/list',[RestaurantController::class,'getList']);
     Route::get('/restaurant/detail/{id}/',[RestaurantController::class,'getDetail']);
+    Route::get('/search', [RestaurantController::class,'search']);
+    Route::post('/reserve', [ReservationController::class,'store']);
 });
 // Route::get('/register', function () {
 //     return view('auth.register');  // 登録フォームのビューを返す
