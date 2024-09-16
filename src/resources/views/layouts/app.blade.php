@@ -13,21 +13,26 @@
 <body>
     <div class="app">
         <header class="header">
-            <h1 class="header__heading"><a class="logo modal-open-btn" data-toggle="modal" data-target="#MenuModal" data-title="" data-url="">Rese</a></h1>
+            <h1 class="header__heading"><a class="logo modal-open-btn" data-toggle="modal" data-target="#MenuModal" data-title="" data-url=""><i class="fa-solid fa-bars-staggered"></i></a>Rese</h1>
 
             <div class="modal" id="MenuModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-             <div class="modal-overlay"></div>
+            <div class="modal-overlay"></div>
             <div class="modal__inner">
-                    <div class="modal__content" style="display: none;">
+                    <div class="modal__content" >
+                        <a href="#" class="modal__close-btn">×
+                        </a>
                         @if(Auth::check() && Auth::user()->hasVerifiedEmail())
-                        <a class="modal-link" href="/">Home</a>
-                        <a class="modal-link" href="/logout">Logout</a>
-                        <a class="modal-link" href="/">mypage</a>
-                        <a href="#" class="modal__close-btn">×</a>
+                        <ul>
+                            <li><a class="modal-link" href="/list">Home</a></li>
+                            <li><a class="modal-link" href="/logout">Logout</a></li>
+                            <li><a class="modal-link" href="/mypage">Mypage</a></li>
+                        </ul>
                         @else
-                        <a class="modal-link" href="/">Home</a>
-                        <a class="modal-link" href="/register">Registration</a>
-                        <a class="modal-link" href="/login">Login</a>
+                        <ul>
+                            <li><a class="modal-link" href="/login">Home</a></li>
+                            <li><a class="modal-link" href="/register">Registration</a></li>
+                            <li><a class="modal-link" href="/login">Login</a></li>
+                        </ul>
                         @endif
                     </div>
                 </div>

@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\MypageController;
+use App\Http\Controllers\FavoriteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -32,10 +34,13 @@ Route::get('/login', [AuthController::class,'getLogin'])->name('login');
 Route::post('/login', [AuthController::class,'postLogin']);
 
 Route::middleware('auth','verified')->group(function(){
+    Route::get('/logout', [AuthController::class,'getLogout']);
     Route::get('/list',[RestaurantController::class,'getList']);
     Route::get('/restaurant/detail/{id}/',[RestaurantController::class,'getDetail']);
     Route::get('/search', [RestaurantController::class,'search']);
     Route::post('/reserve', [ReservationController::class,'store']);
+    Route::get('/mypage',[MypageController::class,'show']);
+    Route::post('/favorite',[FavoriteController::class, 'store']);
 });
 // Route::get('/register', function () {
 //     return view('auth.register');  // 登録フォームのビューを返す

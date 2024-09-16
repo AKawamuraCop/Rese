@@ -14,7 +14,7 @@ class Genre extends Model
 
     protected $fillable = ['genre_name'];
 
-    public function restaurants()
+    public function restaurant()
     {
         return $this->belongsToMany(Restaurant::class, 'restaurant_genres');
     }

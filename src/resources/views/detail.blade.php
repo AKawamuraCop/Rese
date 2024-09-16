@@ -6,15 +6,23 @@
 
 @section('content')
 <div class="detail-container">
-    <div class="restaurant-image">
+    <div class = "restaurant-info">
+        <h1 class="restaurant-title">{{ $restaurant->restaurant_name }}</h1>
+        <div class="restaurant-image">
         <img src="{{ $restaurant->image }}" alt="Image of {{ $restaurant->restaurant_name }}">
-    </div>
-    <div class="restaurant-info">
-        <h1>{{ $restaurant->restaurant_name }}</h1>
-        <p>{{ $restaurant->description }}</p>
+        </div>
+        <div class="restaurant-detail">
+            @foreach($restaurant->area as $obj)
+                <span class="tag">#{{ $obj->area_name }}</span>
+            @endforeach
+            @foreach($restaurant->genre as $gen)
+                <span class="tag">#{{ $gen->genre_name }}</span>
+            @endforeach
+            <p>{{ $restaurant->description }}</p>
+        </div>
     </div>
     <div class="reservation-form">
-        <h2>予約</h2>
+        <h2 class="reservation">予約</h2>
         <form id="reservationForm" action="/reserve" method="post">
             @csrf
             <input type="hidden" name="restaurant_id" value="{{ $restaurant->id }}">
@@ -39,15 +47,16 @@
                 <option value="{{ $number }}">{{ $number }}人</option>
                 @endforeach
             </select>
+            <div class="summary-card">
+                <div id="summary">
+                <p id="restaurantName">レストラン名: <span></span></p>
+                <p id="selectedDate">日付: <span></span></p>
+                <p id="selectedTime">時間: <span></span></p>
+                <p id="selectedNumber">人数: <span></span></p>
+            </div>
+        </div>
             <button type="submit">予約する</button>
         </form>
-        <div id="summary">
-            <h3>選択内容</h3>
-            <p id="restaurantName">レストラン名: <span></span></p>
-            <p id="selectedDate">日付: <span></span></p>
-            <p id="selectedTime">時間: <span></span></p>
-            <p id="selectedNumber">人数: <span></span></p>
-        </div>
     </div>
 </div>
 

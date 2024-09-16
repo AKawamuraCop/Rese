@@ -1,0 +1,167 @@
+/* Main container styling */
+.user-title{
+    text-align: center;
+}
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    /* Spreads content across the horizontal space */
+    align-items: flex-start;
+    /* Aligns items at the top */
+    width:100%;
+    padding: 20px;
+}
+.user-title{
+    display: block;
+}
+/* Booking Info Styling */
+.booking-info {
+    flex: 1;
+    /* Takes up 1 part of the flex container */
+    width: 60%;
+    /* Adds some margin between the sections */
+    padding-left: 80px;
+    padding-right: 50px;
+}
+
+.booking-details {
+    display: flex;
+    flex-direction: column;
+    /* Stacks booking details vertically */
+    gap: 10px;
+    /* Adds space between each booking card */
+}
+h1 {
+    font-size: 20px;
+}
+.booking-details-card {
+    background-color: #007bff;
+    width: 100%;
+    color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.booking-details-card table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.booking-details-card td {
+    padding: 5px;
+    border: none;
+    /* Border color matching text color for better visibility */
+}
+
+.booking-details-card td:first-child {
+    font-weight: bold;
+}
+
+.close-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* User greeting and restaurant cards side by side with booking-info *
+
+/* Restaurant Cards Styling */
+.restaurant-info {
+    flex: 2;
+    padding-right: 80px;
+    padding-left: 50px;
+    width: 40%;
+    /* Takes up 2 parts of the flex container */
+
+}
+.restaurant-details{
+    display: flex;
+        gap: 50px;
+        justify-content: flex-start;
+      
+}
+
+.restaurant-card-detail{
+    padding: 10px;
+}
+.restaurant-card {
+    width: 350px;
+    /* Calculates width to ensure even spacing */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+
+
+.restaurant-card__image {
+    width: 100%;
+    height: 200px;
+    /* Fixed height for images */
+    object-fit: cover;
+    /* Ensures images cover the area properly */
+}
+
+.restaurant-title {
+    font-size: 20px;
+    /* レストラン名を大きめに */
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.tag {
+    font-size: 0.9rem;
+        /* ハッシュタグを小さめに */
+        color: #666;
+        margin-right: 5px;
+}
+
+.details-button {
+    display: block;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        padding: 5px 10px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+}
+.details-button:hover {
+    background-color: #0056b3;
+}
+
+.heart {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: red;
+    font-size: 24px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+    }
+
+    .restaurant-info {
+        justify-content: center;
+        /* Centers the cards when they stack vertically */
+    }
+
+    .restaurant-card {
+        width: 100%;
+        /* Full width for cards on smaller screens */
+    }
+}

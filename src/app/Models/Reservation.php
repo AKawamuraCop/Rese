@@ -13,4 +13,9 @@ class Reservation extends Model
 
     protected $fillable = ['user_id','restaurant_id','date','time','number'];
 
+    public function restaurant()
+    {
+        return $this->belongsTo(Restaurant::class);
+    }
+
 }

@@ -101,18 +101,39 @@
     color: #333;
 }
 
+.form-button{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 .details-button {
     display: inline-block;
-        margin-top: 5px;
-        margin-bottom: 5px;
-        padding: 5px 10px;
-        background-color: #007bff;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 5px;
-        transition: background-color 0.3s;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
 .details-button:hover {
     background-color: #0056b3;
+}
+.favorite-form{
+    display: inline-block;
+}
+.favorite_btn{
+    border: none;
+    background-color: #fff;
+    font-size: 30px;
+}
+.favorite{
+    color: red;
+}
+
+.not-favorite {
+    color: gray;
+
 }

@@ -38,16 +38,26 @@
         <img src="{{ $restaurant->image }}" alt="{{ $restaurant->restaurant_name }}" class="restaurant-card__image">
         <div class="restaurant-info">
             <h2 class="restaurant-title">{{ $restaurant->restaurant_name }}</h2>
-            <!-- Display all areas -->
-            @foreach($restaurant->areas as $area)
-                <span class="tag">#{{ $area->area_name }}</span>
+            <div class="restaurant-tag">
+                 @foreach($restaurant->area as $obj)
+                <span class="tag">#{{ $obj->area_name }}</span>
             @endforeach
-            <!-- Display all genres -->
-            @foreach($restaurant->genres as $genre)
-                <span class="tag">#{{ $genre->genre_name }}</span>
+            @foreach($restaurant->genre as $gen)
+                <span class="tag">#{{ $gen->genre_name }}</span>
             @endforeach
+            </div>
+            <div class="form-button">
+                <a href="/restaurant/detail/{{ $restaurant->id }}" class="details-button">詳しく見る</a>
+            <form class="favorite-form" action="/favorite" method="post">
+            @csrf
+            <input type="hidden" name="restaurant_id" value="{{ $restaurant->id }}">
+            <button class="favorite_btn">
+                <i class="fa-solid fa-heart {{ $favorites->contains('restaurant_id', $restaurant->id) ? 'favorite' : 'not-favorite' }}"></i>
+            </button>
+            </div>
+        </form>
         </div>
-        <a href="/restaurant/detail/{{ $restaurant->id }}" class="details-button">詳しく見る</a>
+        
     </div>
     @endforeach
 </div>

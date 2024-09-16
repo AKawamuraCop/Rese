@@ -14,7 +14,7 @@ class Area extends Model
 
     protected $fillable = ['area_name'];
 
-    public function restaurants()
+    public function restaurant()
     {
         return $this->belongsToMany(Restaurant::class, 'restaurant_areas');
     }

@@ -9,13 +9,22 @@ html, body {
     height: 100%;
 }
 
+.fa-bars-staggered{
+    cursor: pointer;
+     padding: 5px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    color: #fff;
+    background-color: #007bff;
+}
+
 .header__heading {
     text-align: left;
     margin-left: 50px;
     color: #007bff;
 }
 
-/* モーダル */
 .modal {
     display: none;
     position: fixed;
@@ -29,34 +38,64 @@ html, body {
     align-items: center;
 }
 
-/* モーダルのオーバーレイ */
-.modal-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
+.modal__content{
+    margin-top: 100px;
+}
+.modal__content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    /* 半透明の黒で背景を覆う */
-    z-index: 10;
-    /* モーダルウィンドウよりも低く、モーダルコンテンツよりも高い位置に */
 }
 
-.modal__inner {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
+.modal__content li {
+    margin: 10px 0;
+    /* Adds space between list items, adjust as needed */
 }
-
 .modal.is-visible {
     display: flex;
 }
 
+.modal__inner {
+    background-color: #fff;
+    width: 100%;
+    height:100%;
+    /* Adjust width as necessary */
+    padding: 40px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center items vertically */
+}
+
+.modal-link {
+    font-size: 24px;
+    /* Larger font size */
+    font-weight: bold;
+    /* Bold font */
+    color: #007bff;
+    /* Blue color */
+    text-decoration: none;
+    /* No underline */
+    margin-bottom: 20px;
+    /* Space between links */
+}
+
 .modal__close-btn {
     cursor: pointer;
-    /* 閉じるボタンがクリックできるように */
-    font-size: 24px;
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 20px;
+    left: 50px;
+    font-size: 20px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    color: #fff;
+    background-color:#007bff;
+    /* Blue to match the links */
 }
