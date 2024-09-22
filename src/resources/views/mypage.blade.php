@@ -19,24 +19,30 @@
                                 <button class="close-btn"><i class="fa-solid fa-circle-xmark"></i></button>
                             </form>
                             <p><i class="fa-solid fa-clock"></i>予約 {{ $loop->iteration }}</p>
-                                <table>
-                                    <tr>
-                                        <td><strong>Shop</strong></td>
-                                        <td>{{ $reservation->restaurant->restaurant_name }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Date</strong></td>
-                                        <td>{{ $reservation->date }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Time</strong></td>
-                                        <td>{{ $reservation->time }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Number</strong></td>
-                                        <td>{{ $reservation->number }}</td>
-                                    </tr>
-                                </table>
+                            <table>
+                                <tr>
+                                    <td><strong>Shop</strong></td>
+                                    <td>{{ $reservation->restaurant->restaurant_name }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Date</strong></td>
+                                    <td>{{ $reservation->date }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Time</strong></td>
+                                    <td>{{ $reservation->time }}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Number</strong></td>
+                                    <td>{{ $reservation->number }}</td>
+                                </tr>
+                            </table>
+                            <form class="reservation-form" action="/update" method="get">
+                                @csrf
+                                <input type="hidden" name="reservation_id" value="{{ $reservation->id }}">
+                                <input type="hidden" name="route" value="update">
+                                <button class="update-button">予約を変更する</i></button>
+                            </form>
                         </div>
                     @endforeach
                 @else

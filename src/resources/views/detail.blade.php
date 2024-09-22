@@ -28,7 +28,10 @@
             <input type="hidden" name="route" value="{{ $route }}">
             <input type="hidden" name="restaurant_id" value="{{ $restaurant->id }}">
             <input type="hidden" name="restaurant_name" value="{{ $restaurant->restaurant_name }}">
-            <input type="date" id="dateInput" name="date" >
+            @if($route == 'update')
+            <input type="hidden" name="reservation_id" value="{{ $reservation->id}}">
+            @endif
+            <input type="date" id="dateInput" name="date" value="{{ isset($reservation) ? $reservation->date : '' }}">
             <p class="form__error-message">
                 @error('date')
                 {{ $message }}
@@ -42,8 +45,9 @@
                             $hourFormatted = str_pad($hour, 2, '0', STR_PAD_LEFT);
                             $minuteFormatted = $half * 30;
                             $time = "{$hourFormatted}:" . str_pad($minuteFormatted, 2, '0', STR_PAD_LEFT);
+                            $reservationTime = isset($reservation) ? \Carbon\Carbon::parse($reservation->time)->format('H:i') : '';
                         @endphp
-                <option value="{{ $time }}">{{ $time }}</option>
+                <option value="{{ $time }}" {{ $reservationTime == $time ? 'selected' : '' }}>{{ $time }}</option>
                     @endforeach
                 @endforeach
             </select>
@@ -55,7 +59,7 @@
             <select id="numberInput" name="number" >
                 <option value="">人数を選択</option>
                 @foreach (range(1, 10) as $number)
-                <option value="{{ $number }}">{{ $number }}人</option>
+                <option value="{{ $number }}"{{ isset($reservation) && $reservation->number == $number ? 'selected' : '' }}>{{ $number }}人</option>
                 @endforeach
             </select>
             <p class="form__error-message">
@@ -71,7 +75,11 @@
                 <p id="selectedNumber">人数: <span></span></p>
             </div>
         </div>
+        @if($route = 'update')
+            <button type="submit">変更する</button>
+        @else
             <button type="submit">予約する</button>
+        @endif
         </form>
     </div>
 </div>

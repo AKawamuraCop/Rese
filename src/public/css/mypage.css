@@ -149,7 +149,22 @@ td:first-child{
     color: red;
 }
 
+.update-button {
+    display: inline-block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
 
+.update-button:hover {
+    background-color: #0056b3;
+}
 /* メディアクエリでレスポンシブ対応 */
 @media (max-width: 1024px) {
     .main-content {

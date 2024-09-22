@@ -41,5 +41,6 @@ Route::middleware('auth','verified')->group(function(){
     Route::get('/mypage',[MypageController::class,'show']);
     Route::post('/favorite',[FavoriteController::class, 'store']);
     Route::post('/destroy',[ReservationController::class,'destroy']);
+    Route::get('/update',[ReservationController::class,'update']);
 });
 
