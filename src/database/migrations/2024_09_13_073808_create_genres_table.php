@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('genres', function (Blueprint $table) {
             $table->id();
+            $table->integer('genre_number');
             $table->string('genre_name',100);
+            $table->unsignedBigInteger('restaurant_id');
             $table->timestamps();
         });
     }

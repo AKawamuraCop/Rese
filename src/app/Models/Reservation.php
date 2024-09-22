@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+use App\Models\Restaurant;
 
 class Reservation extends Model
 {
@@ -12,6 +14,11 @@ class Reservation extends Model
     protected $guarded = ['id'];
 
     protected $fillable = ['user_id','restaurant_id','date','time','number'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function restaurant()
     {

@@ -95,6 +95,13 @@
     background-color: #003570;
 }
 
+.form__error-message {
+    margin-top: 8px;
+    margin-left:35px;
+    color: #FF9494;
+
+}
+
 /* Summary Section Styling */
 #summary {
     color: #ffffff;

@@ -10,43 +10,41 @@ use App\Models\Favorite;
 
 class RestaurantController extends Controller
 {
-    public function getList()
+     public function getList()
     {
         $user = auth()->user();
-        $areas = Area::all();
-        $genres = Genre::all();
-        $restaurants = Restaurant::with(['area', 'genre'])->get();
+        $restaurants = Restaurant::with(['areas', 'genres'])->get();
         $favorites = Favorite::
             where('user_id', $user->id)
             ->get();
 
-    return view('list', compact('areas','genres','restaurants','favorites'));
+    return view('list', compact('restaurants','favorites'));
     }
 
 
-    public function getDetail($id)
+    public function getDetail(Request $request)
     {
-        $restaurant = Restaurant::find($id);
+        $restaurant = Restaurant::find($request->restaurant_id);
+        $route = $request->route;
 
-        return view('detail', compact('restaurant'));
+        return view('detail', compact('restaurant', 'route'));
     }
 
     public function search(Request $request)
     {
-    $areas = Area::all();
-    $genres = Genre::all();
 
-    $query = Restaurant::with(['area', 'genre']);
+        $user = auth()->user();
+        $query = Restaurant::with(['areas', 'genres']);
 
     if (!empty($request->area)) {
-        $query->whereHas('area', function ($q) use ($request) {
-            $q->where('area_id', $request->area);
+        $query->whereHas('areas', function ($q) use ($request) {
+            $q->where('area_number', $request->area);
         });
     }
 
     if (!empty($request->genre)) {
-        $query->whereHas('genre', function ($q) use ($request) {
-            $q->where('genre_id', $request->genre);
+        $query->whereHas('genres', function ($q) use ($request) {
+            $q->where('genre_number', $request->genre);
         });
     }
 
@@ -55,7 +53,8 @@ class RestaurantController extends Controller
     }
 
     $restaurants = $query->get();
+    $favorites = Favorite::where('user_id', $user->id)->get();
 
-    return view('list', compact('areas', 'genres', 'restaurants'));
+    return view('list', compact('restaurants','favorites'));
     }
 }

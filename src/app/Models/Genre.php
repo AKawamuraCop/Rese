@@ -12,10 +12,10 @@ class Genre extends Model
 
     protected $guarded = ['id'];
 
-    protected $fillable = ['genre_name'];
+        protected $fillable = ['genre_number','genre_name','restaurant_id'];
 
     public function restaurant()
     {
-        return $this->belongsToMany(Restaurant::class, 'restaurant_genres');
+        return $this->belongsTo(Restaurant::class);
     }
 }

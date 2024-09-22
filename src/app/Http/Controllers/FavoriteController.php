@@ -10,6 +10,7 @@ class FavoriteController extends Controller
 {
     public function store(Request $request)
     {
+        $route = $request->route;
         $userId = auth()->id();
         //お気に入り検索
         $favorite =Favorite::
@@ -31,6 +32,16 @@ class FavoriteController extends Controller
         ]);
 
         }
-        return redirect('/list');
+        if($route == 'list'){
+            return redirect('/list');
+
+        }else{
+            return redirect('/mypage');
+
+        }
+
+        
     }
+
+
 }

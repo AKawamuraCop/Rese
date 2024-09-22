@@ -12,11 +12,11 @@
         <img src="{{ $restaurant->image }}" alt="Image of {{ $restaurant->restaurant_name }}">
         </div>
         <div class="restaurant-detail">
-            @foreach($restaurant->area as $obj)
-                <span class="tag">#{{ $obj->area_name }}</span>
+            @foreach($restaurant->areas as $area)
+                <span class="tag">#{{ $area->area_name }}</span>
             @endforeach
-            @foreach($restaurant->genre as $gen)
-                <span class="tag">#{{ $gen->genre_name }}</span>
+            @foreach($restaurant->genres as $genre)
+                <span class="tag">#{{ $genre->genre_name }}</span>
             @endforeach
             <p>{{ $restaurant->description }}</p>
         </div>
@@ -25,10 +25,16 @@
         <h2 class="reservation">予約</h2>
         <form id="reservationForm" action="/reserve" method="post">
             @csrf
+            <input type="hidden" name="route" value="{{ $route }}">
             <input type="hidden" name="restaurant_id" value="{{ $restaurant->id }}">
             <input type="hidden" name="restaurant_name" value="{{ $restaurant->restaurant_name }}">
-            <input type="date" id="dateInput" name="date" required>
-            <select name="time" id="timeInput" required>
+            <input type="date" id="dateInput" name="date" >
+            <p class="form__error-message">
+                @error('date')
+                {{ $message }}
+                @enderror
+            </p>
+            <select name="time" id="timeInput" >
                 <option value="">時間を選択</option>
                 @foreach (range(9, 23) as $hour)
                     @foreach (range(0, 1) as $half)
@@ -41,12 +47,22 @@
                     @endforeach
                 @endforeach
             </select>
-            <select id="numberInput" name="number" required>
+            <p class="form__error-message">
+                @error('time')
+                {{ $message }}
+                @enderror
+            </p>
+            <select id="numberInput" name="number" >
                 <option value="">人数を選択</option>
-                @foreach (range(1, 10) as $number) <!-- Adjust range as needed -->
+                @foreach (range(1, 10) as $number)
                 <option value="{{ $number }}">{{ $number }}人</option>
                 @endforeach
             </select>
+            <p class="form__error-message">
+                @error('number')
+                {{ $message }}
+                @enderror
+            </p>
             <div class="summary-card">
                 <div id="summary">
                 <p id="restaurantName">レストラン名: <span></span></p>

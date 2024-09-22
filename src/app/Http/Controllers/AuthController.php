@@ -58,7 +58,14 @@ class AuthController extends Controller
 
     public function getLogin()
     {
-        return view('auth.login');
+        if(Auth::check())
+        {
+            return redirect('/list');
+        }
+        else
+        {
+            return view('auth.login');
+        }
     }
 
     public function postLogin(LoginRequest $request)

@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Favorite;
+use App\Models\Reservation;
+use App\Models\Restaurant;
+
+
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -42,8 +47,13 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    public function favorite()
+    public function restaurantFavorites()
     {
-        return $this->hasMany('App\Models\Favorite');
+        return $this->belongsToMany(Restaurant::class, 'favorites', 'user_id', 'restaurant_id');
+    }
+
+     public function restaurantReservations()
+    {
+        return $this->belongsToMany(Restaurant::class, 'reservations', 'user_id', 'restaurant_id');
     }
 }

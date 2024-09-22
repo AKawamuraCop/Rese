@@ -15,6 +15,7 @@
         <header class="header">
             <h1 class="header__heading"><a class="logo modal-open-btn" data-toggle="modal" data-target="#MenuModal" data-title="" data-url=""><i class="fa-solid fa-bars-staggered"></i></a>Rese</h1>
 
+
             <div class="modal" id="MenuModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
             <div class="modal-overlay"></div>
             <div class="modal__inner">

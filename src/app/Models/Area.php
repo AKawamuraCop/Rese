@@ -12,12 +12,11 @@ class Area extends Model
 
     protected $guarded = ['id'];
 
-    protected $fillable = ['area_name'];
+    protected $fillable = ['area_number','area_name','restaurant_id'];
 
     public function restaurant()
     {
-        return $this->belongsToMany(Restaurant::class, 'restaurant_areas');
+        return $this->belongsTo(Restaurant::class);
     }
 
-    
 }

@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Area;
 use App\Models\Genre;
 use App\Models\Reservations;
+use App\Models\Favorite;
+use App\Models\User;
 
 class Restaurant extends Model
 {
@@ -17,23 +19,24 @@ class Restaurant extends Model
     protected $fillable = ['restaurant_name','description','image'];
 
 
-    public function area()
+    public function areas()
     {
-        return $this->belongsToMany(Area::class, 'restaurant_areas');
+        return $this->hasMany(Area::class);
     }
 
-    public function genre()
+    public function genres()
     {
-        return $this->belongsToMany(Genre::class,'restaurant_genres');
+        return $this->hasMany(Genre::class);
     }
 
-    public function reservation()
+
+    public function userFavorites()
     {
-        return $this->hasMany('App\Models\Reservation');
+        return $this->belongsToMany(User::class, 'favorites', 'restaurant_id', 'user_id');
     }
 
-    public function favorite()
+    public function userReservations()
     {
-        return $this->hasMany('App\Models\Favorite');
+        return $this->belongsToMany(User::class, 'reservations', 'restaurant_id', 'user_id');
     }
 }

@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('areas', function (Blueprint $table) {
             $table->id();
+            $table->integer('area_number');
             $table->string('area_name',50);
+            $table->unsignedBigInteger('restaurant_id');
             $table->timestamps();
         });
     }

@@ -8,23 +8,20 @@
 <div class="search-bar">
     <div class="search-bar-box">
     <form action="/search" method="get" class="search-form" id="search-form">
-        <!-- Area Dropdown -->
         <select name="area" class="search-dropdown" onchange="submitForm()">
             <option value="">All areas</option>
-            @foreach ($areas as $area)
-                <option value="{{ $area->id }}" @if( request('area')==$area->id ) selected @endif>{{ $area->area_name }}</option>
-            @endforeach
+            <option value="1" @if(request('area') == '1') selected @endif>東京</option>
+            <option value="2" @if(request('area') == '2') selected @endif>大阪</option>
+            <option value="3" @if(request('area') == '3') selected @endif>福岡</option>
         </select>
-
-        <!-- Genre Dropdown -->
         <select name="genre" class="search-dropdown" onchange="submitForm()">
             <option value="">All genres</option>
-            @foreach ($genres as $genre)
-                <option value="{{ $genre->id }}" @if( request('genre')==$genre->id ) selected @endif>{{ $genre->genre_name }}</option>
-            @endforeach
+            <option value="1" @if(request('genre') == '1') selected @endif>イタリアン</option>
+            <option value="2" @if(request('genre') == '2') selected @endif>ラーメン</option>
+            <option value="3" @if(request('genre') == '3') selected @endif>居酒屋</option>
+            <option value="3" @if(request('genre') == '4') selected @endif>寿司</option>
+            <option value="3" @if(request('genre') == '5') selected @endif>焼肉</option>
         </select>
-
-        <!-- Search Input -->
         <div class="search-input-container">
                 <i class="fa fa-search search-icon"></i>
                 <input type="text" placeholder="Search..." name="search" class="search-input" value="{{ request('search') }}" onkeydown="if (event.keyCode == 13) { this.form.submit(); return false; }">
@@ -39,25 +36,29 @@
         <div class="restaurant-info">
             <h2 class="restaurant-title">{{ $restaurant->restaurant_name }}</h2>
             <div class="restaurant-tag">
-                 @foreach($restaurant->area as $obj)
-                <span class="tag">#{{ $obj->area_name }}</span>
+                @foreach($restaurant->areas as $area)
+                <span class="tag">#{{ $area->area_name }}</span>
             @endforeach
-            @foreach($restaurant->genre as $gen)
-                <span class="tag">#{{ $gen->genre_name }}</span>
+            @foreach($restaurant->genres as $genre)
+                <span class="tag">#{{ $genre->genre_name }}</span>
             @endforeach
             </div>
             <div class="form-button">
-                <a href="/restaurant/detail/{{ $restaurant->id }}" class="details-button">詳しく見る</a>
-            <form class="favorite-form" action="/favorite" method="post">
-            @csrf
-            <input type="hidden" name="restaurant_id" value="{{ $restaurant->id }}">
-            <button class="favorite_btn">
-                <i class="fa-solid fa-heart {{ $favorites->contains('restaurant_id', $restaurant->id) ? 'favorite' : 'not-favorite' }}"></i>
-            </button>
+                <form class="details-form" action="/restaurant/detail" method="get">
+                    <input type="hidden" name="restaurant_id" value="{{ $restaurant->id }}">
+                    <input type="hidden" name="route" value="list">
+                    <button class="details-button">詳しく見る</button>
+                </form>
+                <form class="favorite-form" action="/favorite" method="post"> 
+                    @csrf
+                    <input type="hidden" name="restaurant_id" value="{{ $restaurant->id }}">
+                    <input type="hidden" name="route" value="list">
+                    <button class="favorite_btn">
+                        <i class="fa-solid fa-heart {{ $favorites->contains('restaurant_id', $restaurant->id) ? 'favorite' : 'not-favorite' }}"></i>
+                    </button>
+                </form>
             </div>
-        </form>
         </div>
-        
     </div>
     @endforeach
 </div>
