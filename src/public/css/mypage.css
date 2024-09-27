@@ -1,7 +1,8 @@
-.user-title{
+.user-title {
     font-size: 30px;
     text-align: center;
 }
+
 .main-content {
     display: flex;
     justify-content: space-around;
@@ -9,9 +10,11 @@
     padding: 5px 80px;
     width: 100%;
 }
-.title{
+
+.title {
     font-size: 25px;
 }
+
 .booking-info {
     flex: 2;
     padding: 20px;
@@ -34,32 +37,35 @@
     position: relative;
 }
 
-table{
+table {
     width: 100%;
     border-collapse: collapse;
 }
 
-td{
+td {
     padding: 5px;
     border: none;
 }
-td:first-child{
+
+td:first-child {
     font-weight: bold;
 }
 
-/* 店舗リストセクション */
+/* 蠎苓�繝ｪ繧ｹ繝医そ繧ｯ繧ｷ繝ｧ繝ｳ */
 .restaurant-list {
     flex: 3;
     padding: 20px;
 }
-.restaurant-details{
+
+.restaurant-details {
     display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
     gap: 40px;
 }
+
 .restaurant-card {
-    width: calc(100% - 20px);
+    width: calc(50% - 20px);
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -79,31 +85,33 @@ td:first-child{
     flex-direction: column;
     align-items: left;
     justify-content: left;
-    padding:10px;
+    padding: 10px;
     width: 100%;
 }
 
 .restaurant-title {
     font-size: 18px;
-    /* レストラン名のフォントサイズ */
+    /* 繝ｬ繧ｹ繝医Λ繝ｳ蜷阪�繝輔か繝ｳ繝医し繧､繧ｺ */
     font-weight: bold;
-    /* 太字に */
+    /* 螟ｪ蟄励↓ */
     margin-top: 8px;
     margin-bottom: 3px;
 }
 
 .restaurant-tag {
     font-size: 14px;
-    /* タグのフォントサイズ */
+    /* 繧ｿ繧ｰ縺ｮ繝輔か繝ｳ繝医し繧､繧ｺ */
     color: #666;
     margin-bottom: 15px;
 }
+
 .form-button {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 10px;
 }
+
 .details-button {
     display: inline-block;
     margin-top: 5px;
@@ -115,48 +123,70 @@ td:first-child{
     border-radius: 5px;
     border: none;
     transition: background-color 0.3s;
+    cursor: pointer;
 }
 
 .details-button:hover {
     background-color: #0056b3;
 }
-.reservation-form{
+
+.reservation-form,
+.review-form {
     text-align: right;
 }
-.close-btn{
+
+.reservation-form select,
+.reservation-form input[type=date] {
+    width: 50%;
+    padding: 5px;
+    margin-top: 5px;
+    margin-left: 30px;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    border: 0.5px solid #ccc;
+}
+
+.close-btn {
     border: none;
     background-color: #007bff;
     font-size: 20px;
     color: #007bff;
     cursor: pointer;
+    cursor: pointer;
 }
-.fa-circle-xmark{
-    
+
+.fa-circle-xmark {
     background-color: #007bff;
     color: #fff;
 }
-.fa-clock{
+
+.fa-clock {
     margin-right: 10px;
     font-size: 25px;
 }
+
 .favorite_btn {
     border: none;
     background-color: #fff;
     font-size: 30px;
+    cursor: pointer;
 }
 
 .favorite {
     color: red;
 }
 
-.update-button {
+.update-button,
+.review-button {
     display: inline-block;
     margin-top: 5px;
     margin-bottom: 5px;
     padding: 5px 10px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: #fff;
+    color: #007bff;
     border: none;
+    cursor: pointer;
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s;
@@ -165,7 +195,14 @@ td:first-child{
 .update-button:hover {
     background-color: #0056b3;
 }
-/* メディアクエリでレスポンシブ対応 */
+
+.flash_message {
+    margin-bottom: 50px;
+    padding: 10px 0;
+    color: #fff;
+}
+
+/* 繝｡繝�ぅ繧｢繧ｯ繧ｨ繝ｪ縺ｧ繝ｬ繧ｹ繝昴Φ繧ｷ繝門ｯｾ蠢� */
 @media (max-width: 1024px) {
     .main-content {
         flex-direction: column;

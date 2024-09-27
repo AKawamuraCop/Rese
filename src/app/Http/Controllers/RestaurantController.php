@@ -7,6 +7,8 @@ use App\Models\Restaurant;
 use App\Models\Area;
 use App\Models\Genre;
 use App\Models\Favorite;
+use App\Models\Reservation;
+use App\Models\Review;
 
 class RestaurantController extends Controller
 {
@@ -24,10 +26,32 @@ class RestaurantController extends Controller
 
     public function getDetail(Request $request)
     {
+        $userId = auth()->id();
         $restaurant = Restaurant::find($request->restaurant_id);
         $route = $request->route;
 
-        return view('detail', compact('restaurant', 'route'));
+        //過去予約の件数を取得
+        $reservationCount = Reservation::where('user_id', $userId)
+                        ->where('restaurant_id', $restaurant->id)
+                        ->whereDate('date', '<', now()->toDateString())
+                        ->count();
+
+        //評価の件数を取得
+        $reviewCount = Review::where('user_id', $userId)
+                    ->where('restaurant_id', $restaurant->id)
+                    ->count();
+
+        // 件数が等しくない場合は、評価画面を表示させる
+        if($reservationCount !== $reviewCount)
+        {
+            $show = 'review';
+        }
+        else
+        {
+            $show = 'reservation';
+        }
+
+        return view('detail', compact('restaurant', 'route', 'show'));
     }
 
     public function search(Request $request)
@@ -38,18 +62,18 @@ class RestaurantController extends Controller
 
     if (!empty($request->area)) {
         $query->whereHas('areas', function ($q) use ($request) {
-            $q->where('area_number', $request->area);
+            $q->where('number', $request->area);
         });
     }
 
     if (!empty($request->genre)) {
         $query->whereHas('genres', function ($q) use ($request) {
-            $q->where('genre_number', $request->genre);
+            $q->where('number', $request->genre);
         });
     }
 
     if (!empty($request->search)) {
-        $query->where('restaurant_name', 'like', '%' . $request->search . '%');
+        $query->where('name', 'like', '%' . $request->search . '%');
     }
 
     $restaurants = $query->get();

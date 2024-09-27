@@ -12,7 +12,7 @@ class Area extends Model
 
     protected $guarded = ['id'];
 
-    protected $fillable = ['area_number','area_name','restaurant_id'];
+    protected $fillable = ['number','name','restaurant_id'];
 
     public function restaurant()
     {

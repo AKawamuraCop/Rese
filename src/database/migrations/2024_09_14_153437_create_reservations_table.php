@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('restaurant_id');
-            $table->date('date')->nullable();
-            $table->time('time')->nullable();
-            $table->integer('number')->nullable();
+            $table->date('date');
+            $table->time('time');
+            $table->integer('number');
             $table->timestamps();
         });
     }

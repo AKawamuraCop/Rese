@@ -40,31 +40,41 @@
     color: #333;
     font-size: 30px;
 }
-.tag{
-    color: #666;
-        font-size: 16px;
-}
-.restaurant-detail p {
+
+.tag {
     color: #666;
     font-size: 16px;
 }
 
+.restaurant-detail p {
+    color: #666;
+    font-size: 16px;
+}
+.review-message{
+font-size: 20px;;
+    display: block;
+}
 /* Reservation Form Styling */
-.reservation-form {
+.reservation-form,
+.review-form {
     background-color: #007bff;
     /* Blue background */
-    
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 40%;
     height: 100%;
     /* Adjusts the width of the reservation form section */
 }
-.reservation{
+
+.reservation,
+.review {
     margin-left: 30px;
 }
+
+
 .reservation-form h2,
-.reservation-form h3 {
+.reservation-form h3,
+.review-form h2 {
     color: #ffffff;
 }
 
@@ -78,7 +88,8 @@
     border: 1px solid #ccc;
 }
 
-.reservation-form button {
+.reservation-form button,
+.review-form button {
     width: 100%;
     padding: 10px;
     margin-top: 10px;
@@ -95,11 +106,54 @@
     background-color: #003570;
 }
 
+.rating {
+    direction: rtl;
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+    margin-left: 30px;
+}
+
+.rating input {
+    display: none;
+}
+
+.rating label {
+    font-size: 30px;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.rating input:checked~label,
+.rating input:hover~label {
+    color: gold;
+}
+
+.comment-area {
+    width: 90%;
+    /* Makes the comment box larger */
+    height: 150px;
+    margin: 0 auto;
+    padding: 10px;
+    margin-left: 30px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+    /* Allows vertical resizing */
+}
+
 .form__error-message {
     margin-top: 8px;
-    margin-left:35px;
+    margin-left: 35px;
     color: #FF9494;
 
+}
+
+.flash_message {
+    margin-bottom: 50px;
+    padding: 10px 0;
 }
 
 /* Summary Section Styling */
@@ -108,7 +162,7 @@
     margin-top: 20px;
 }
 
-.summary-card{
+.summary-card {
     width: 85%;
     margin-top: 10px;
     margin-left: 30px;

@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 use App\Models\Favorite;
 use App\Models\Reservation;
 use App\Models\Restaurant;
+use App\Models\Review;
 
 
 
@@ -26,6 +27,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'auth',
     ];
 
     /**
@@ -52,8 +54,14 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsToMany(Restaurant::class, 'favorites', 'user_id', 'restaurant_id');
     }
 
-     public function restaurantReservations()
+    public function restaurantReservations()
     {
         return $this->belongsToMany(Restaurant::class, 'reservations', 'user_id', 'restaurant_id');
     }
+
+    public function restaurantReviews()
+    {
+        return $this->belongsToMany(Restaurant::class, 'reviews', 'user_id', 'restaurant_id');
+    }
+
 }

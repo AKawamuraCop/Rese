@@ -15,26 +15,26 @@ class MypageController extends Controller
         $user = auth()->user();
         $restaurants = Restaurant::with(['areas', 'genres'])->get();
 
-        //中間テーブルを作って、Mypageにお気に入りを表示させるとき、
-        //中間テーブルから直接取り出す方がいいのか、Mypageなので、ユーザモデルから関連情報をする方がいいのか
-        //Laravelは正規化の考え方はあるのか？
+        //予約状況取得
         $reservations = Reservation::with(['restaurant'])
             ->where('user_id', $user->id)
+            ->whereDate('date', '>=', now()->toDateString())
             ->get();
+
+        //過去の予約を取得
+        $pastReservations = Reservation::with(['restaurant'])
+            ->where('user_id', $user->id)
+            ->whereDate('date', '<', now()->toDateString())
+            ->groupBy('restaurant_id', 'user_id')
+            ->selectRaw('MAX(date) as date, restaurant_id, user_id')
+            ->get();
+
 
         $favorites = Favorite::with(['restaurant'])
             ->where('user_id', $user->id)
             ->get();
 
-        //$reservations = User::with('restaurantReservations')
-            //->where('id', $user->id)
-            //->get();
 
-        //$favorites = User::with('restaurantFavorites')
-            //->where('id', $user->id)
-            //->get();
-
-
-        return view('mypage',compact('reservations', 'favorites', 'user'));
+        return view('mypage',compact('reservations','pastReservations', 'favorites', 'user'));
     }
 }

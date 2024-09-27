@@ -16,26 +16,7 @@ class ReservationController extends Controller
         $userId = auth()->id();
         $route = $request->route;
 
-        if($request->route == 'update')
-        {
-            $reservation = Reservation::find($request->input('reservation_id'));
-
-            if ($reservation && $reservation->user_id == $userId) {
-                $reservation->update([
-                    'restaurant_id' => $request->input('restaurant_id'),
-                    'date' => $request->input('date'),
-                    'time' => $request->input('time'),
-                    'number' => $request->input('number')
-                ]);
-            } else {
-                return redirect()->back()->withErrors('Reservation not found or unauthorized.');
-            }
-
-            return view('done',compact('route'));
-
-        }else{
-
-            Reservation::create([
+        Reservation::create([
                 'user_id' => $userId,
                 'restaurant_id'=> $request->input('restaurant_id'),
                 'date' => $request->input('date'),
@@ -46,9 +27,8 @@ class ReservationController extends Controller
 
         return view('done',compact('route'));
 
-        }
-        
     }
+
 
     public function destroy(Request $request)
     {
@@ -60,14 +40,25 @@ class ReservationController extends Controller
 
     public function update(Request $request)
     {
-        $reservation = Reservation::find($request->reservation_id);
-        $date = $reservation->date;
-        $time = $reservation->time;
-        $number = $reservation->number;
+        $userId = auth()->id();
+        $reservation = Reservation::find($request->input('reservation_id'));
 
-        $restaurant = Restaurant::find($reservation->restaurant_id);
-        $route = $request->route;
-        return view('detail', compact('restaurant','reservation','route'));
+            if ($reservation && $reservation->user_id == $userId) {
+                $reservation->update([
+                    'date' => $request->input('date'),
+                    'time' => $request->input('time'),
+                    'number' => $request->input('number')
+                ]);
+            } else {
+                return redirect()->back()->withErrors('Reservation not found or unauthorized.');
+            }
+        return redirect('/mypage')->withResult('予約を変更しました');
 
+    }
+
+    public function getList()
+    {
+        $reservations = Reservation::with(['user','restaurant'])->get();
+        return view('reservationList', compact('reservations'));
     }
 }

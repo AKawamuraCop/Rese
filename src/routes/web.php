@@ -5,6 +5,7 @@ use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\ReviewController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -41,6 +42,8 @@ Route::middleware('auth','verified')->group(function(){
     Route::get('/mypage',[MypageController::class,'show']);
     Route::post('/favorite',[FavoriteController::class, 'store']);
     Route::post('/destroy',[ReservationController::class,'destroy']);
-    Route::get('/update',[ReservationController::class,'update']);
+    Route::put('/update',[ReservationController::class,'update']);
+    Route::post('/review',[ReviewController::class,'store']);
+    Route::get('reservationList',[ReservationController::class,'getList']);
 });
 

@@ -19,28 +19,50 @@
                                 <button class="close-btn"><i class="fa-solid fa-circle-xmark"></i></button>
                             </form>
                             <p><i class="fa-solid fa-clock"></i>予約 {{ $loop->iteration }}</p>
-                            <table>
-                                <tr>
-                                    <td><strong>Shop</strong></td>
-                                    <td>{{ $reservation->restaurant->restaurant_name }}</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Date</strong></td>
-                                    <td>{{ $reservation->date }}</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Time</strong></td>
-                                    <td>{{ $reservation->time }}</td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Number</strong></td>
-                                    <td>{{ $reservation->number }}</td>
-                                </tr>
-                            </table>
-                            <form class="reservation-form" action="/update" method="get">
-                                @csrf
+                            <form class="reservation-form" action="/update" method="post">
+                                 @csrf
+                                <input type="hidden" name="_method" value="put">
                                 <input type="hidden" name="reservation_id" value="{{ $reservation->id }}">
-                                <input type="hidden" name="route" value="update">
+                                <table>
+                                    <tr>
+                                        <td><strong>Shop</strong></td>
+                                        <td>{{ $reservation->restaurant->name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Date</strong></td>
+                                        <td><input type="date" id="dateInput" name="date" value="{{ $reservation->date }}"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Time</strong></td>
+                                        <td>
+                                            <select name="time" id="timeInput" >
+                                                <option value="">時間を選択</option>
+                                                    @foreach (range(9, 23) as $hour)
+                                                        @foreach (range(0, 1) as $half)
+                                                            @php
+                                                                $hourFormatted = str_pad($hour, 2, '0', STR_PAD_LEFT);
+                                                                $minuteFormatted = $half * 30;
+                                                                $time = "{$hourFormatted}:" . str_pad($minuteFormatted, 2, '0', STR_PAD_LEFT);
+                                                                $reservationTime = isset($reservation) ? \Carbon\Carbon::parse($reservation->time)->format('H:i') : '';
+                                                            @endphp
+                                                            <option value="{{ $time }}" {{ $reservationTime == $time ? 'selected' : '' }}>{{ $time }}</option>
+                                                        @endforeach
+                                                    @endforeach
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Number</strong></td>
+                                        <td>
+                                            <select id="numberInput" name="number" >
+                                                <option value="">人数を選択</option>
+                                                    @foreach (range(1, 10) as $number)
+                                                        <option value="{{ $number }}"{{ $reservation->number == $number ? 'selected' : '' }}>{{ $number }}人</option>
+                                                    @endforeach
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </table>
                                 <button class="update-button">予約を変更する</i></button>
                             </form>
                         </div>
@@ -49,21 +71,45 @@
                     <p>予約はありません</p>
                 @endif
             </div>
+            <h1 class="title">予約履歴のあるレストラン</h1>
+            <p>レストラン詳細ページから評価をお願い致します</p>
+            <div class="booking-details">
+                @if($pastReservations && $pastReservations->isNotEmpty())
+                    @foreach($pastReservations as $pastReservation)
+                        <div class="booking-details-card">
+                            <table>
+                                <tr>
+                                    <td><strong>Shop</strong></td>
+                                    <td>{{ $pastReservation->restaurant->name }}</td>
+                                </tr>
+                            </table>
+                            <form class="review-form" action="/restaurant/detail" method="get">
+                                @csrf
+                                <input type="hidden" name="restaurant_id" value="{{ $pastReservation->restaurant->id }}">
+                                <input type="hidden" name="route" value="mypageReview">
+                                <button class="review-button">詳しくみる</i></button>
+                            </form>
+                        </div>
+                    @endforeach
+                @else
+                    <p>過去履歴はありません</p>
+                @endif
+            </div>
         </div>
         <div class="restaurant-list">
             <h1 class="title">お気に入り店舗</h1>
             <div class="restaurant-details">
                 @foreach($favorites as $favorite)
                     <div class="restaurant-card">
-                        <img class="restaurant-card__image" src="{{ $favorite->restaurant->image }}" alt="{{ $favorite->restaurant->restaurant_name }}" />
+                        <img class="restaurant-card__image" src="{{ $favorite->restaurant->image }}" alt="{{ $favorite->restaurant->name }}" />
                         <div class="restaurant-info">
-                            <h4 class="restaurant-title">{{$favorite->restaurant->restaurant_name}}</h4>
+                            <h4 class="restaurant-title">{{$favorite->restaurant->name}}</h4>
                             <div class="restaurant-tag">
                                 @foreach($favorite->restaurant->areas as $area)
-                                    <span class="tag">#{{ $area->area_name }}</span>
+                                    <span class="tag">#{{ $area->name }}</span>
                                 @endforeach
                                 @foreach($favorite->restaurant->genres as $genre)
-                                    <span class="tag">#{{ $genre->genre_name }}</span>
+                                    <span class="tag">#{{ $genre->name }}</span>
                                 @endforeach
                             </div>
                             <div class="form-button">
@@ -71,7 +117,7 @@
                                     <input type="hidden" name="restaurant_id" value="{{ $favorite->restaurant->id }}">
                                     <input type="hidden" name="route" value="mypage">
                                     <button class="details-button">
-                                        詳しく見る
+                                        詳しくみる
                                     </button>
                                 </form>
                                 <form class="favorite-form" action="/favorite" method="post">

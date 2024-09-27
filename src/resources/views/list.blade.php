@@ -32,22 +32,22 @@
 <div class="restaurant-list">
     @foreach($restaurants as $restaurant)
     <div class="restaurant-card">
-        <img src="{{ $restaurant->image }}" alt="{{ $restaurant->restaurant_name }}" class="restaurant-card__image">
+        <img src="{{ $restaurant->image }}" alt="{{ $restaurant->name }}" class="restaurant-card__image">
         <div class="restaurant-info">
-            <h2 class="restaurant-title">{{ $restaurant->restaurant_name }}</h2>
+            <h2 class="restaurant-title">{{ $restaurant->name }}</h2>
             <div class="restaurant-tag">
                 @foreach($restaurant->areas as $area)
-                <span class="tag">#{{ $area->area_name }}</span>
+                <span class="tag">#{{ $area->name }}</span>
             @endforeach
             @foreach($restaurant->genres as $genre)
-                <span class="tag">#{{ $genre->genre_name }}</span>
+                <span class="tag">#{{ $genre->name }}</span>
             @endforeach
             </div>
             <div class="form-button">
                 <form class="details-form" action="/restaurant/detail" method="get">
                     <input type="hidden" name="restaurant_id" value="{{ $restaurant->id }}">
                     <input type="hidden" name="route" value="list">
-                    <button class="details-button">詳しく見る</button>
+                    <button class="details-button">詳しくみる</button>
                 </form>
                 <form class="favorite-form" action="/favorite" method="post"> 
                     @csrf

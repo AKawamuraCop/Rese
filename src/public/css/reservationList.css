@@ -1,0 +1,23 @@
+.reservation-list{
+    width:100%;
+    align-items: center;
+}
+
+.reservation-table{
+    width:80%;
+    border-collapse: collapse;
+    margin: 20px auto;
+    font-size: 18px;
+    text-align: left;
+}
+
+.reservation-table th, .reservation-table td{
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+.reservation-table th{
+    background-color: #007bff;
+    font-weight: bold;
+    color: #fff;
+}

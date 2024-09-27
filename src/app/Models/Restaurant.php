@@ -9,6 +9,7 @@ use App\Models\Genre;
 use App\Models\Reservations;
 use App\Models\Favorite;
 use App\Models\User;
+use App\Models\Review;
 
 class Restaurant extends Model
 {
@@ -16,7 +17,7 @@ class Restaurant extends Model
 
     protected $guarded = ['id'];
 
-    protected $fillable = ['restaurant_name','description','image'];
+    protected $fillable = ['name','description','image'];
 
 
     public function areas()
@@ -38,5 +39,10 @@ class Restaurant extends Model
     public function userReservations()
     {
         return $this->belongsToMany(User::class, 'reservations', 'restaurant_id', 'user_id');
+    }
+
+    public function userReview()
+    {
+        return $this->belongsToMany(User::class, 'reviews', 'restaurant_id', 'user_id');
     }
 }
