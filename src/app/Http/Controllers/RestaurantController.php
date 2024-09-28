@@ -9,6 +9,7 @@ use App\Models\Genre;
 use App\Models\Favorite;
 use App\Models\Reservation;
 use App\Models\Review;
+use Illuminate\Support\Facades\Storage;
 
 class RestaurantController extends Controller
 {
@@ -60,25 +61,82 @@ class RestaurantController extends Controller
         $user = auth()->user();
         $query = Restaurant::with(['areas', 'genres']);
 
-    if (!empty($request->area)) {
-        $query->whereHas('areas', function ($q) use ($request) {
-            $q->where('number', $request->area);
-        });
+        if (!empty($request->area)) {
+            $query->whereHas('areas', function ($q) use ($request) {
+                $q->where('number', $request->area);
+            });
+        }
+
+        if (!empty($request->genre)) {
+            $query->whereHas('genres', function ($q) use ($request) {
+                $q->where('number', $request->genre);
+            });
+        }
+
+        if (!empty($request->search)) {
+            $query->where('name', 'like', '%' . $request->search . '%');
+        }
+
+        $restaurants = $query->get();
+        $favorites = Favorite::where('user_id', $user->id)->get();
+
+        return view('list', compact('restaurants','favorites'));
     }
 
-    if (!empty($request->genre)) {
-        $query->whereHas('genres', function ($q) use ($request) {
-            $q->where('number', $request->genre);
-        });
+    public function getRestaurantRegister()
+    {
+        return view('restaurantRegister');
     }
 
-    if (!empty($request->search)) {
-        $query->where('name', 'like', '%' . $request->search . '%');
-    }
+    public function postRestaurantRegister(Request $request)
+    {
+        // バリデーションを行う（必要に応じて追加）
+        // 画像を保存し、そのパスを取得
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('public/images');
+            // パスを簡単にアクセスできるようにする
+            $imagePath = str_replace('public/', 'storage/', $imagePath);
+        } else {
+            $imagePath = null; // 画像がアップロードされない場合
+        }
+        // Restaurantのデータを保存し、そのIDを取得
+        $restaurant = Restaurant::create([
+                'name' => $request->input('restaurant_name'),
+                'description' => $request->input('description'),
+                'image' => $imagePath
+        ]);
 
-    $restaurants = $query->get();
-    $favorites = Favorite::where('user_id', $user->id)->get();
+        // ジャンルを保存
+        $genres = $request->input('genres');
+        if (!empty($genres)) {
+            foreach ($genres as $genre) {
+                // JSON形式の値をデコードして配列に変換
+                $genreData = json_decode($genre, true);
 
-    return view('list', compact('restaurants','favorites'));
+                Genre::create([
+                    'number' => $genreData['id'],
+                    'name' => $genreData['name'],
+                    'restaurant_id' => $restaurant->id
+                ]);
+            }
+        }
+
+        // エリアを保存
+        $areas = $request->input('areas');
+        if (!empty($areas)) {
+            foreach ($areas as $area) {
+                // JSON形式の値をデコードして配列に変換
+                $areaData = json_decode($area, true);
+
+                Area::create([
+                    'number' => $areaData['id'],
+                    'name' => $areaData['name'],
+                    'restaurant_id' => $restaurant->id
+
+                ]);
+            }
+        }
+        return redirect()->back()->with('success', 'Restaurant registered successfully.');
+
     }
 }

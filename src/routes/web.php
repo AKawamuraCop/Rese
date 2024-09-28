@@ -45,5 +45,9 @@ Route::middleware('auth','verified')->group(function(){
     Route::put('/update',[ReservationController::class,'update']);
     Route::post('/review',[ReviewController::class,'store']);
     Route::get('reservationList',[ReservationController::class,'getList']);
+    Route::get('/restaurantRegister',[RestaurantController::class,'getRestaurantRegister']);
+    Route::post('/restaurantRegister',[RestaurantController::class,'postRestaurantRegister']);
+    Route::get('/managerRegister',[AuthController::class,'getManagerRegister']);
+    Route::post('/managerRegister',[AuthController::class,'postManagerRegister']);
 });
 

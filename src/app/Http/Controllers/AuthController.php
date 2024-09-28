@@ -23,6 +23,7 @@ class AuthController extends Controller
                 'name' => $request['name'],
                 'email' => $request['email'],
                 'password' => Hash::make($request['password']),
+                'auth' => $request['auth'], //3
                 'email_verified_at' => null,
             ]);
 
@@ -33,6 +34,34 @@ class AuthController extends Controller
         } catch (\Throwable $th) {
 
             return redirect('register')->with('result', 'エラーが発生しました' . $th->getMessage());
+        }
+    }
+
+    //店舗代表登録
+    public function getManagerRegister()
+    {
+        return view('managerRegister');
+    }
+
+    public function postManagerRegister(RegisterRequest $request)
+    {
+        try {
+            $user = User::create([
+                'name' => $request['name'],
+                'email' => $request['email'],
+                'password' => Hash::make($request['password']),
+                'auth' => $request['auth'], //2
+                'email_verified_at' => null,
+            ]);
+
+            // 2(店舗代表)の時は自動的にメール認証を行う。
+                $user->markEmailAsVerified();
+
+            return redirect('managerRegister')->with('result', '登録が完了しました');
+
+        } catch (\Throwable $th) {
+
+            return redirect('managerRegister')->with('result', 'エラーが発生しました' . $th->getMessage());
         }
     }
 
