@@ -10,6 +10,7 @@ use App\Models\Favorite;
 use App\Models\Reservation;
 use App\Models\Review;
 use Illuminate\Support\Facades\Storage;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class RestaurantController extends Controller
 {
@@ -52,7 +53,25 @@ class RestaurantController extends Controller
             $show = 'reservation';
         }
 
-        return view('detail', compact('restaurant', 'route', 'show'));
+        // 予約が存在する場合、QRコードを生成
+        $reservation = Reservation::where('user_id', $userId)
+                        ->where('restaurant_id', $restaurant->id)
+                        ->whereDate('date', '>', now()->toDateString())
+                        ->first();
+
+        $qrCode = null;
+        if ($reservation) {
+            $qrCodeData = [
+                'restaurant_name' => $restaurant->name,
+                'date' => $reservation->date,
+                'time' => $reservation->time,
+                'number' => $reservation->number,
+            ];
+            // QRコードに予約情報をエンコード
+            $qrCode = QrCode::size(200)->generate(json_encode($qrCodeData));
+        }
+
+        return view('detail', compact('restaurant', 'route', 'show', 'qrCode'));
     }
 
     public function search(Request $request)

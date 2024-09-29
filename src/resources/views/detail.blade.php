@@ -109,6 +109,12 @@
             </form>
         </div>
     @endif
+    @if($qrCode)
+    <div class="qr-code-section">
+        <h3>QRコードで予約情報を確認</h3>
+        {!! $qrCode !!}
+    </div>
+    @endif
 </div>
 
 <script>
