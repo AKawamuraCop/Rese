@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Jobs\SendReservationReminder;
 
 class Kernel extends ConsoleKernel
 {
@@ -13,6 +14,12 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         // $schedule->command('inspire')->hourly();
+
+        // 毎日午前0時にジョブを実行
+        $schedule->call(function () {
+            // 非同期でジョブをディスパッチ
+            SendReservationReminder::dispatch();
+        })->dailyAt('00:00');
     }
 
     /**
@@ -22,6 +29,6 @@ class Kernel extends ConsoleKernel
     {
         $this->load(__DIR__.'/Commands');
 
-        require base_path('routes/console.php');
+        //require base_path('routes/console.php');
     }
 }
