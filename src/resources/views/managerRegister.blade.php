@@ -13,7 +13,7 @@
 <div class="register-form">
     <h2 class="register-form__heading content__heading">Manager Registration</h2>
     <div class="register-form__inner">
-        <form class="register-form__form" action="/managerRegister" method="post">
+        <form class="register-form__form" action="/manager/register" method="post">
             @csrf
             <input type="hidden" name="auth" value="2">
             <div class="register-from__group">

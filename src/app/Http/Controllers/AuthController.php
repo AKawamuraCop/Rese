@@ -57,7 +57,7 @@ class AuthController extends Controller
             // 2(店舗代表)の時は自動的にメール認証を行う。
                 $user->markEmailAsVerified();
 
-            return redirect('managerRegister')->with('result', '登録が完了しました');
+            return redirect('manager/register')->with('result', '登録が完了しました');
 
         } catch (\Throwable $th) {
 

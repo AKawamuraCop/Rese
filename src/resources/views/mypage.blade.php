@@ -13,13 +13,13 @@
                 @if($reservations && $reservations->isNotEmpty())
                     @foreach($reservations as $reservation)
                         <div class="booking-details-card">
-                            <form class="reservation-form" action="/destroy" method="post">
+                            <form class="reservation-form" action="/reservation/destroy" method="post">
                                 @csrf
                                 <input type="hidden" name="reservation_id" value="{{ $reservation->id }}">
                                 <button class="close-btn"><i class="fa-solid fa-circle-xmark"></i></button>
                             </form>
                             <p><i class="fa-solid fa-clock"></i>予約 {{ $loop->iteration }}</p>
-                            <form class="reservation-form" action="/update" method="post">
+                            <form class="reservation-form" action="/reservation/update" method="post">
                                  @csrf
                                 <input type="hidden" name="_method" value="put">
                                 <input type="hidden" name="reservation_id" value="{{ $reservation->id }}">

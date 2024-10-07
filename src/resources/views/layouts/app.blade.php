@@ -28,10 +28,10 @@
                             <li><a class="modal-link" href="/logout">Logout</a></li>
                             <li><a class="modal-link" href="/mypage">Mypage</a></li>
                             @if(Auth::user()->auth == 1)
-                                <li><a class="modal-link" href="/managerRegister">Manager Registration</a></li>
+                                <li><a class="modal-link" href="/manager/register">Manager Registration</a></li>
                             @elseif(Auth::user()->auth == 2)
-                                <li><a class="modal-link" href="/restaurantRegister">Restaurant Registration</a></li>
-                                <li><a class="modal-link" href="/reservationList">Reservation List</a></li>
+                                <li><a class="modal-link" href="/restaurant/register">Restaurant Registration</a></li>
+                                <li><a class="modal-link" href="/reservation/list">Reservation List</a></li>
                             @endif
                         </ul>
                         @else

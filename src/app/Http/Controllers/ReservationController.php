@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 use App\Models\Reservation;
 use App\Models\Restaurant;
 use App\Http\Requests\ReservationRequest;
+use Carbon\Carbon;
 
 class ReservationController extends Controller
 {
@@ -60,5 +61,23 @@ class ReservationController extends Controller
     {
         $reservations = Reservation::with(['user','restaurant'])->get();
         return view('reservationList', compact('reservations'));
+    }
+
+    public function getReservationCheck(Request $request)
+    {
+        // QRコードデータがクエリパラメータとして渡されることを想定
+        $qrCodeData = $request->get('data');
+
+        // JSON形式のデータをデコード
+        $qrDecode = json_decode($qrCodeData, true);
+        // デコードしたデータが配列でない場合、単一の予約情報を配列にする
+        if (!is_array($qrDecode)) {
+            $qrData = [$qrDecode]; // 単一の予約情報を配列にする
+        } else {
+            $qrData = $qrDecode; // 既に配列であればそのまま使用
+        }
+
+        // デコードしたデータをビューに渡す
+        return view('reservationCheck', Compact('qrData'));
     }
 }

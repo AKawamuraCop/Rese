@@ -9,12 +9,13 @@ use App\Models\Genre;
 use App\Models\Favorite;
 use App\Models\Reservation;
 use App\Models\Review;
+use App\Http\Controllers\ReservationController;
 use Illuminate\Support\Facades\Storage;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class RestaurantController extends Controller
 {
-     public function getList()
+    public function getList()
     {
         $user = auth()->user();
         $restaurants = Restaurant::with(['areas', 'genres'])->get();
@@ -28,7 +29,10 @@ class RestaurantController extends Controller
 
     public function getDetail(Request $request)
     {
-        $userId = auth()->id();
+        $user = auth()->user();
+        $userId = $user->id;
+        $userAuth = $user->auth;
+
         $restaurant = Restaurant::find($request->restaurant_id);
         $route = $request->route;
 
@@ -53,23 +57,41 @@ class RestaurantController extends Controller
             $show = 'reservation';
         }
 
-        // 予約が存在する場合、QRコードを生成
-        $reservation = Reservation::where('user_id', $userId)
-                        ->where('restaurant_id', $restaurant->id)
+        //店舗代表だけが見ることができるQRを生成
+        if($userAuth === 2)
+        {
+            // 予約が存在する場合、QRコードを生成
+            $reservations = Reservation::where('restaurant_id', $restaurant->id)
                         ->whereDate('date', '>', now()->toDateString())
-                        ->first();
+                        ->get();
 
-        $qrCode = null;
-        if ($reservation) {
-            $qrCodeData = [
-                'restaurant_name' => $restaurant->name,
-                'date' => $reservation->date,
-                'time' => $reservation->time,
-                'number' => $reservation->number,
-            ];
-            // QRコードに予約情報をエンコード
-            $qrCode = QrCode::size(200)->generate(json_encode($qrCodeData));
+            $qrCode = null;
+            if ($reservations->isNotEmpty()) {
+                // すべての予約情報を配列として取得
+                $qrCodeData = [];
+                foreach ($reservations as $reservation) {
+                    $qrCodeData[] = [
+                        'restaurant_name' => $restaurant->name,
+                        'date' => $reservation->date,
+                        'time' => $reservation->time,
+                        'number' => $reservation->number,
+                        'user_id' => $reservation->user_id,
+                    ];
+                }
+
+                // QRコードに予約情報をエンコードし、ルート情報を付加
+                $encodedData = route('reservation.check', [
+                    'data' => json_encode($qrCodeData)
+                ]);
+
+                // QRコードを生成するためのライブラリを使用（例: Simple QR Code Generator）
+                $qrCode = QrCode::generate($encodedData); // QrCodeは使用するライブラリに応じて変更
+            }
+
+        }else{
+            $qrCode = null;
         }
+
 
         return view('detail', compact('restaurant', 'route', 'show', 'qrCode'));
     }
@@ -104,7 +126,8 @@ class RestaurantController extends Controller
 
     public function getRestaurantRegister()
     {
-        return view('restaurantRegister');
+        $restaurant = null;
+        return view('restaurantRegister', compact('restaurant'));
     }
 
     public function postRestaurantRegister(Request $request)
@@ -133,7 +156,7 @@ class RestaurantController extends Controller
                 $genreData = json_decode($genre, true);
 
                 Genre::create([
-                    'number' => $genreData['id'],
+                    'number' => $genreData['number'],
                     'name' => $genreData['name'],
                     'restaurant_id' => $restaurant->id
                 ]);
@@ -148,13 +171,121 @@ class RestaurantController extends Controller
                 $areaData = json_decode($area, true);
 
                 Area::create([
-                    'number' => $areaData['id'],
+                    'number' => $areaData['number'],
                     'name' => $areaData['name'],
                     'restaurant_id' => $restaurant->id
 
                 ]);
             }
         }
+        return redirect()->back()->with('success', 'Restaurant registered successfully.');
+
+    }
+
+    public function getUpdateList()
+    {
+        $user = auth()->user();
+        $restaurants = Restaurant::with(['areas', 'genres'])->get();
+
+    return view('restaurantUpdateList', compact('restaurants'));
+    }
+
+    public function getRestaurantUpdate(Request $request)
+    {
+
+        $restaurant = Restaurant::with(['areas', 'genres'])->find($request->restaurant_id);
+
+        return view('restaurantUpdate', compact('restaurant'));
+    }
+
+
+    public function postRestaurantUpdate(Request $request)
+    {
+        // 画像を保存し、そのパスを取得
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('public/images');
+            // パスを簡単にアクセスできるようにする
+            $imagePath = str_replace('public/', 'storage/', $imagePath);
+        } else {
+            $imagePath = null; // 画像がアップロードされない場合
+        }
+
+        $restaurantId = $request->input('restaurant_id');
+
+        Restaurant::find($restaurantId)->update([
+            'restaurant_name' => $request->input('restaurant_name'),
+            'description' => $request-> input('description'),
+        ]);
+
+        //画像を更新
+        if($imagePath != null){
+            Restaurant::find($restaurantId)->update([
+                'image' => $imagePath
+            ]);
+        }
+
+        // ジャンルを更新
+        $existGenres = Genre::where('restaurant_id', $restaurantId)->get();
+
+        $genres = $request->input('genres');
+        $existingGenreIds = $existGenres->pluck('number')->toArray();  // 既存ジャンルのIDを配列に変換
+
+        if (!empty($genres)) {
+            // 新しいジャンルの処理
+            foreach ($genres as $genre) {
+                // JSON形式の値をデコードして配列に変換
+                $genreData = json_decode($genre, true);
+                // ジャンルが存在しなければ新規作成
+                if (!in_array($genreData['number'], $existingGenreIds)) {
+                    Genre::create([
+                        'number' => $genreData['number'],
+                        'name' => $genreData['name'],
+                        'restaurant_id' => $restaurantId,
+                        ]);
+                }
+            }
+        }
+
+        // 削除対象のジャンルの処理
+        $newGenreIds = array_column(array_map('json_decode', $genres), 'number');  // 新しいジャンルのIDを配列に変換
+        foreach ($existGenres as $existGenre) {
+            // 新しいジャンルの中に既存のジャンルがなければ削除
+            if (!in_array($existGenre->number, $newGenreIds)) {
+                $existGenre->delete();
+            }
+        }
+
+         // エリアを更新
+        $existAreas = Area::where('restaurant_id', $restaurantId)->get();
+
+        $areas = $request->input('areas');
+        $existingAreaIds = $existAreas->pluck('number')->toArray();  // 既存エリアのIDを配列に変換
+
+        if (!empty($areas)) {
+            // 新しいジャンルの処理
+            foreach ($areas as $area) {
+                // JSON形式の値をデコードして配列に変換
+                $areaData = json_decode($area, true);
+                // ジャンルが存在しなければ新規作成
+                if (!in_array($areaData['number'], $existingAreaIds)) {
+                    Area::create([
+                        'number' => $areaData['number'],
+                        'name' => $areaData['name'],
+                        'restaurant_id' => $restaurantId,
+                        ]);
+                }
+            }
+        }
+
+        // 削除対象のエリアの処理
+        $newAreaIds = array_column(array_map('json_decode', $areas), 'id');  // 新しいジャンルのIDを配列に変換
+        foreach ($existAreas as $existArea) {
+            // 新しいエリアの中に既存のエリアがなければ削除
+            if (!in_array($existArea->number, $newAreaIds)) {
+                $existArea->delete();
+            }
+        }
+
         return redirect()->back()->with('success', 'Restaurant registered successfully.');
 
     }

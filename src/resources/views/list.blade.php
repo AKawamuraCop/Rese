@@ -32,7 +32,7 @@
 <div class="restaurant-list">
     @foreach($restaurants as $restaurant)
     <div class="restaurant-card">
-        <img src="{{ $restaurant->image }}" alt="{{ $restaurant->name }}" class="restaurant-card__image">
+        <img  src="{{ (preg_match('/^http/', $restaurant->image)) ? $restaurant->image : asset($restaurant->image) }}" alt="Restaurant Image" class="restaurant-card__image">
         <div class="restaurant-info">
             <h2 class="restaurant-title">{{ $restaurant->name }}</h2>
             <div class="restaurant-tag">

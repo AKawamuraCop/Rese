@@ -113,10 +113,12 @@
     <div class="qr-code-section">
         <h3>QRコードで予約情報を確認</h3>
         {!! $qrCode !!}
+        <div id="reader" style="width: 250px; height: 250px;"></div>
     </div>
     @endif
 </div>
 
+<script src="https://unpkg.com/html5-qrcode/minified/html5-qrcode.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const dateInput = document.getElementById('dateInput');
@@ -135,8 +137,27 @@ document.addEventListener('DOMContentLoaded', function() {
     timeInput.addEventListener('change', updateSummary);
     numberInput.addEventListener('change', updateSummary);
 
-    // Initial update
+    // 初期更新
     updateSummary();
+
+    // QRコードのスキャン成功時の動作
+    function onScanSuccess(decodedText, decodedResult) {
+        console.log(`QR Code detected: ${decodedText}`);
+        // QRコードデータを含むURLにリダイレクト
+        window.location.href = '/reservation/check?data=' + encodeURIComponent(decodedText);
+    }
+
+    // QRコードのスキャン失敗時の動作
+    function onScanFailure(error) {
+        console.warn(`コード読み取りエラー = ${error}`);
+    }
+
+    // QRコードスキャナーを初期化
+    let html5QrcodeScanner = new Html5QrcodeScanner(
+        "reader", { fps: 10, qrbox: 250 }
+    );
+
+    html5QrcodeScanner.render(onScanSuccess, onScanFailure);
 });
 </script>
 @endsection

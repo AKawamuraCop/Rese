@@ -41,13 +41,17 @@ Route::middleware('auth','verified')->group(function(){
     Route::post('/reserve', [ReservationController::class,'store']);
     Route::get('/mypage',[MypageController::class,'show']);
     Route::post('/favorite',[FavoriteController::class, 'store']);
-    Route::post('/destroy',[ReservationController::class,'destroy']);
-    Route::put('/update',[ReservationController::class,'update']);
+    Route::post('/reservation/destroy',[ReservationController::class,'destroy']);
+    Route::put('/reservation/update',[ReservationController::class,'update']);
     Route::post('/review',[ReviewController::class,'store']);
-    Route::get('reservationList',[ReservationController::class,'getList']);
-    Route::get('/restaurantRegister',[RestaurantController::class,'getRestaurantRegister']);
-    Route::post('/restaurantRegister',[RestaurantController::class,'postRestaurantRegister']);
-    Route::get('/managerRegister',[AuthController::class,'getManagerRegister']);
-    Route::post('/managerRegister',[AuthController::class,'postManagerRegister']);
+    Route::get('reservation/list',[ReservationController::class,'getList']);
+    Route::get('/restaurant/register',[RestaurantController::class,'getRestaurantRegister']);
+    Route::post('/restaurant/register',[RestaurantController::class,'postRestaurantRegister']);
+    Route::get('/manager/register',[AuthController::class,'getManagerRegister']);
+    Route::post('/manager/register',[AuthController::class,'postManagerRegister']);
+    Route::get('/restaurant/updateList',[RestaurantController::class,'getUpdateList']);
+    Route::get('/restaurant/update',[RestaurantController::class,'getRestaurantUpdate']);
+    Route::post('/restaurant/update',[RestaurantController::class,'postRestaurantUpdate']);
+    Route::get('/reservation/check',[ReservationController::class,'getReservationCheck'])->name('reservation.check');  // ルートに名前を付ける;
 });
 
