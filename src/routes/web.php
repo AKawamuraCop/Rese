@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +53,8 @@ Route::middleware('auth','verified')->group(function(){
     Route::get('/restaurant/updateList',[RestaurantController::class,'getUpdateList']);
     Route::get('/restaurant/update',[RestaurantController::class,'getRestaurantUpdate']);
     Route::post('/restaurant/update',[RestaurantController::class,'postRestaurantUpdate']);
-    Route::get('/reservation/check',[ReservationController::class,'getReservationCheck'])->name('reservation.check');  // ルートに名前を付ける;
+    Route::get('/reservation/check',[ReservationController::class,'getReservationCheck'])->name('reservation.check');
+    Route::get('/admin/email',[AdminController::class, 'showEmailForm']);
+    Route::post('/admin/email',[AdminController::class, 'sendEmail']);
 });
 

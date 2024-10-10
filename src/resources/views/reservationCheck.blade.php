@@ -5,20 +5,17 @@
 @endsection
 
 @section('content')
-<div class="reservation-check-container">
-    <h1>予約情報</h1>
-
-    @foreach($qrData as $reservation)
-        <div class="reservation-info">
-            <div class="reservation-details">
-                <h1 class="title">予約詳細</h1>
-                <p>レストラン名: {{ $reservation['restaurant_name'] }}</p>
-                <p>日付: {{ $reservation['date'] }}</p>
-                <p>時間: {{ \Carbon\Carbon::parse($reservation['time'])->format('H:i') }}</p>
-                <p>人数: {{ $reservation['number'] }}人</p>
-                <p>ユーザーID: {{ $reservation['user_id'] }}</p>
-            </div>
-        </div>
-    @endforeach
-</div>
+    <div class="container qr-container">
+        <ul class="qr-list">
+            @if ($qrData)
+                <li class="qr-item"><strong>店舗名:</strong> {{ $qrData['restaurant_name'] }}</li>
+                <li class="qr-item"><strong>予約日:</strong> {{ $qrData['date'] }}</li>
+                <li class="qr-item"><strong>時間:</strong> {{ $qrData['time'] }}</li>
+                <li class="qr-item"><strong>人数:</strong> {{ $qrData['number'] }}</li>
+                <li class="qr-item"><strong>ユーザーID:</strong> {{ $qrData['user_id'] }}</li>
+            @else
+                <li class="qr-item">情報がありません。</li>
+            @endif
+        </ul>
+    </div>
 @endsection

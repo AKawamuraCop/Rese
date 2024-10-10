@@ -1,0 +1,238 @@
+/bin/sh: php: command not found
+/bin/sh: php: command not found
+/bin/sh: php: command not found
+/bin/sh: php: command not found
+/bin/sh: php: command not found
+/bin/sh: php: command not found
+/bin/sh: php: command not found
+/bin/sh: php: command not found
+/bin/sh: php: command not found
+/bin/sh: php: command not found
+/bin/sh: php: command not found
+/bin/sh: php: command not found
+/bin/sh: php: command not found
+/bin/sh: php: command not found
+/bin/sh: php: command not found
+/bin/sh: php: command not found
+/bin/sh: php: command not found
+/bin/sh: php: command not found
+/bin/sh: php: command not found
+/bin/sh: php: command not found
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+Could not open input file: /Users/coco/coachtech/Rese/artisan
+/bin/sh: docker: command not found
+/bin/sh: docker: command not found
+/bin/sh: docker: command not found
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+  2024-10-09 22:09:01 Running ['artisan' app:send-emails] ....... 1,194ms DONE
+  ⇂ '/usr/local/bin/php' 'artisan' app:send-emails > '/dev/null' 2>&1  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+  2024-10-09 22:10:01 Running ['artisan' app:send-emails] ....... 1,173ms DONE
+  ⇂ '/usr/local/bin/php' 'artisan' app:send-emails > '/dev/null' 2>&1  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+Error response from daemon: container 073b38755c56767a845844bef274b0fa8b595382ac46300648751038bc292b93 is not running
+Error response from daemon: container 073b38755c56767a845844bef274b0fa8b595382ac46300648751038bc292b93 is not running
+Error response from daemon: container 073b38755c56767a845844bef274b0fa8b595382ac46300648751038bc292b93 is not running
+Error response from daemon: container 073b38755c56767a845844bef274b0fa8b595382ac46300648751038bc292b93 is not running
+Error response from daemon: container 073b38755c56767a845844bef274b0fa8b595382ac46300648751038bc292b93 is not running
+Error response from daemon: container 073b38755c56767a845844bef274b0fa8b595382ac46300648751038bc292b93 is not running
+Error response from daemon: container 073b38755c56767a845844bef274b0fa8b595382ac46300648751038bc292b93 is not running
+Error response from daemon: container 073b38755c56767a845844bef274b0fa8b595382ac46300648751038bc292b93 is not running
+Error response from daemon: container 073b38755c56767a845844bef274b0fa8b595382ac46300648751038bc292b93 is not running
+Error response from daemon: container 073b38755c56767a845844bef274b0fa8b595382ac46300648751038bc292b93 is not running
+Cannot connect to the Docker daemon at unix:///Users/coco/.docker/run/docker.sock. Is the docker daemon running?
+Cannot connect to the Docker daemon at unix:///Users/coco/.docker/run/docker.sock. Is the docker daemon running?
+Cannot connect to the Docker daemon at unix:///Users/coco/.docker/run/docker.sock. Is the docker daemon running?

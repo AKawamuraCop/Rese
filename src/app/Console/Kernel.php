@@ -16,10 +16,8 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
 
         // 毎日午前0時にジョブを実行
-        $schedule->call(function () {
-            // 非同期でジョブをディスパッチ
-            SendReservationReminder::dispatch();
-        })->dailyAt('00:00');
+        $schedule->command('app:send-emails')
+        ->dailyAt('08:00');
     }
 
     /**

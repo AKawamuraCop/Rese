@@ -1,18 +1,21 @@
-.title {
-    font-size: 25px;
-}
-.reservation-info{
+.qr-container {
     display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    padding: 5px 80px;
-    width: 100%;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
-.reservation-details {
-    flex: 2;
-        padding: 20px;
-    border-radius: 5px;
+
+.qr-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.qr-item {
     background-color: #007bff;
-    color: white;
-    margin: 10px 20px;
+    color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    border-radius: 5px;
 }
