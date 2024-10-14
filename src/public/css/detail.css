@@ -2,43 +2,82 @@
 .detail-container {
     display: flex;
     justify-content: space-around;
-    /* Adjusts the spacing between the two sections */
     align-items: flex-start;
-    /* Aligns items at the top */
     flex-wrap: wrap;
-    /* Allows items to wrap in smaller screens */
     padding: 20px;
+}
+
+.restaurant-title {
+    display: flex;
+    align-items: center;
+}
+
+.restaurant-title a {
+    margin-right: 10px;
+    font-size:15px;
+    /* ボタンとテキストの間隔を調整 */
+}
+
+.btn-secondary {
+    background-color: #fff;
+    padding: 3px 10px;
+    text-decoration: none;
+    color: #000;
+    border-radius: 5px;
+    box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.354);
 }
 
 /* Restaurant Info and Image */
 .restaurant-info {
     display: flex;
     flex-direction: column;
-    /* Stack the image and details vertically */
     align-items: left;
-    /* Center-align the content */
     width: 50%;
-    /* Adjusts the width of the restaurant info section */
     height: 100%;
 }
 
-.restaurant-image img {
-    width: 100%;
-    max-width: 90%;
-    /* Adjust the max-width as necessary */
-    height: auto;
-
-}
-
-.restaurant-detail {
-    text-align: left;
-    margin-top: 20px;
-    max-width: 90%;
+/* Restaurant header: title and button */
+.restaurant-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
 }
 
 .restaurant-title {
     color: #333;
     font-size: 30px;
+    margin-right: 20px;
+    /* Adds space between title and button */
+}
+
+/* Reservation button */
+.reservation-btn {
+    background-color: #ffcc00;
+    color: #333;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.reservation-btn:hover {
+    background-color: #e6b800;
+}
+
+/* Restaurant Image */
+.restaurant-image img {
+    width: 100%;
+    max-width: 90%;
+    height: auto;
+}
+
+/* Restaurant Detail */
+.restaurant-detail {
+    text-align: left;
+    margin-top: 20px;
+    max-width: 90%;
 }
 
 .tag {
@@ -50,20 +89,20 @@
     color: #666;
     font-size: 16px;
 }
-.review-message{
-font-size: 20px;;
+
+.review-message {
+    font-size: 20px;
     display: block;
 }
+
 /* Reservation Form Styling */
 .reservation-form,
 .review-form {
     background-color: #007bff;
-    /* Blue background */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 40%;
     height: 100%;
-    /* Adjusts the width of the reservation form section */
 }
 
 .reservation,
@@ -71,9 +110,7 @@ font-size: 20px;;
     margin-left: 30px;
 }
 
-
 .reservation-form h2,
-.reservation-form h3,
 .review-form h2 {
     color: #ffffff;
 }
@@ -105,7 +142,15 @@ font-size: 20px;;
 .reservation-form button:hover {
     background-color: #003570;
 }
+#summary p {
+    margin: 10px 0;
+    /* 上下にスペースを追加 */
+}
 
+#summary span {
+    margin-left: 30px;
+    /* タイトルと値の間にスペースを追加 */
+}
 .rating {
     direction: rtl;
     display: flex;
@@ -132,7 +177,6 @@ font-size: 20px;;
 
 .comment-area {
     width: 90%;
-    /* Makes the comment box larger */
     height: 150px;
     margin: 0 auto;
     padding: 10px;
@@ -141,14 +185,12 @@ font-size: 20px;;
     border: 1px solid #ccc;
     border-radius: 5px;
     resize: vertical;
-    /* Allows vertical resizing */
 }
 
 .form__error-message {
     margin-top: 8px;
     margin-left: 35px;
     color: #FF9494;
-
 }
 
 .flash_message {
@@ -156,7 +198,6 @@ font-size: 20px;;
     padding: 10px 0;
 }
 
-/* Summary Section Styling */
 #summary {
     color: #ffffff;
     margin-top: 20px;
@@ -176,7 +217,7 @@ font-size: 20px;;
     font-size: 14px;
 }
 
-/* Responsive adjustments for smaller screens */
+/* Responsive adjustments */
 @media (max-width: 768px) {
     .detail-container {
         flex-direction: column;
@@ -186,11 +227,9 @@ font-size: 20px;;
     .restaurant-info,
     .reservation-form {
         width: 100%;
-        /* Full width on smaller screens */
     }
 
     .restaurant-image img {
         max-width: 100%;
-        /* Allows image to fill the container */
     }
 }

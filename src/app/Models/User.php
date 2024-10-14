@@ -11,6 +11,7 @@ use App\Models\Favorite;
 use App\Models\Reservation;
 use App\Models\Restaurant;
 use App\Models\Review;
+use Laravel\Cashier\Billable;
 
 
 

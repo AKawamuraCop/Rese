@@ -7,7 +7,10 @@
 @section('content')
 <div class="detail-container">
     <div class = "restaurant-info">
-        <h1 class="restaurant-title">{{ $restaurant->name }}</h1>
+        <div class="restaurant-title">
+            <a href="/list" class="btn btn-secondary">＜</a>
+            <h1 class="restaurant-title">{{ $restaurant->name }}</h1>
+        </div>
         <div class="restaurant-image">
         <img src="{{ $restaurant->image }}" alt="Image of {{ $restaurant->name }}">
         </div>
@@ -76,10 +79,10 @@
                 </p>
                 <div class="summary-card">
                     <div id="summary">
-                        <p id="restaurantName">レストラン名: <span></span></p>
-                        <p id="selectedDate">日付: <span></span></p>
-                        <p id="selectedTime">時間: <span></span></p>
-                        <p id="selectedNumber">人数: <span></span></p>
+                        <p id="restaurantName">Shop <span></span></p>
+                        <p id="selectedDate">Date <span></span></p>
+                        <p id="selectedTime">Time <span></span></p>
+                        <p id="selectedNumber">Number <span></span></p>
                     </div>
                 </div>
                 <input type="hidden" name="route" value="list">
@@ -128,9 +131,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function updateSummary() {
         document.getElementById('restaurantName').querySelector('span').textContent = restaurantName;
-        document.getElementById('selectedDate').querySelector('span').textContent = dateInput.value || '未選択';
-        document.getElementById('selectedTime').querySelector('span').textContent = timeInput.value || '未選択';
-        document.getElementById('selectedNumber').querySelector('span').textContent = numberInput.value ? numberInput.value + '人' : '未選択';
+        document.getElementById('selectedDate').querySelector('span').textContent = dateInput.value || '';
+        document.getElementById('selectedTime').querySelector('span').textContent = timeInput.value || '';
+        document.getElementById('selectedNumber').querySelector('span').textContent = numberInput.value ? numberInput.value + '人' : '';
     }
 
     dateInput.addEventListener('change', updateSummary);

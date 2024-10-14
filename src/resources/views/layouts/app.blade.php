@@ -27,6 +27,7 @@
                             <li><a class="modal-link" href="/list">Home</a></li>
                             <li><a class="modal-link" href="/logout">Logout</a></li>
                             <li><a class="modal-link" href="/mypage">Mypage</a></li>
+                            <li><a class="modal-link" href="/payment">Payment</a></li>
                             @if(Auth::user()->auth == 1)
                                 <li><a class="modal-link" href="/manager/register">Manager Registration</a></li>
                                 <li><a class="modal-link" href="/admin/email">Send Mass Email</a></li>

@@ -12,6 +12,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PaymentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,5 +57,8 @@ Route::middleware('auth','verified')->group(function(){
     Route::get('/reservation/check',[ReservationController::class,'getReservationCheck'])->name('reservation.check');
     Route::get('/admin/email',[AdminController::class, 'showEmailForm']);
     Route::post('/admin/email',[AdminController::class, 'sendEmail']);
+    Route::get('/payment',[PaymentsController::class,'getPayment']);
+    Route::post('/payment',[PaymentsController::class,'postPayment']);
+    Route::get('/payment/complete',[PaymentsController::class,'completePayment']);
 });
 
