@@ -52,11 +52,17 @@
     /* アイコンのスペースを考慮 */
 }
 
-.restaurant-list {
+.restaurant-list-container {
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+}
+.restaurant-list{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
     padding: 20px;
+    margin: 0 auto;
 }
 
 .restaurant-card {
@@ -65,7 +71,7 @@
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    margin-bottom: 30px;
+    margin: 5px;
     overflow: hidden;
 }
 
@@ -91,7 +97,7 @@
 
 .restaurant-card__image {
     width: 100%;
-    height: 200px;
+    aspect-ratio: 16/9;
     object-fit: cover;
 }
 
@@ -139,11 +145,77 @@
 
 }
 
-/* メディアクエリーによるレスポンシブ対応 */
+@media (max-width: 1280px) {
+    .restaurant-list-container {
+            align-items: center;
+            text-align: center;
+            margin: 0 auto;
+        }
+    }
+    
+/* Media query for screens with max width of 768px */
 @media (max-width: 768px) {
-    .restaurant-list {
-        flex-direction: column;
-        /* 縦に並べ替え */
+    .search-bar {
+        justify-content: center;
+        padding: 10px;
+        margin-right: 0;
+        width: 90%;
     }
 
+    .search-bar-box {
+        width: 100%;
+    }
+
+    .search-form {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .search-dropdown {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .search-input-container {
+        width: 100%;
+    }
+
+
+    .restaurant-list {
+        justify-content: center;
+        padding: 10px;
+    }
+
+    .restaurant-card {
+        width: calc(50% - 10px);
+        margin-bottom: 20px;
+    }
+
+    .restaurant-card__image::before {
+        width: 30%;
+        height: auto;
+        object-fit: cover;
+
+    }
+
+    .restaurant-title {
+        font-size: 1.5rem;
+    }
+
+    .details-button {
+        padding: 10px;
+        margin-top: 10px;
+    }
+
+
+.form-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+    .favorite_btn {
+        font-size: 25px;
+        margin-top: 10px;
+    }
 }

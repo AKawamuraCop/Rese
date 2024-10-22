@@ -20,10 +20,10 @@
             @endforeach
             </div>
             <div class="form-button">
-                <form class="details-form" action="/restaurant/update" method="get">
+                <form class="update-form" action="/restaurant/update" method="get">
                     <input type="hidden" name="restaurant_id" value="{{ $restaurant->id }}">
                     <input type="hidden" name="route" value="list">
-                    <button class="details-button">更新する</button>
+                    <button class="update-button">更新する</button>
                 </form>
             </div>
         </div>

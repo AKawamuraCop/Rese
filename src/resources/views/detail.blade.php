@@ -5,14 +5,19 @@
 @endsection
 
 @section('content')
+@if (session('msg'))
+<div class="flash_message">
+  {{ session('msg') }}
+</div>
+@endif
 <div class="detail-container">
     <div class = "restaurant-info">
         <div class="restaurant-title">
             <a href="/list" class="btn btn-secondary">＜</a>
-            <h1 class="restaurant-title">{{ $restaurant->name }}</h1>
+            <h1 class="restaurant-head">{{ $restaurant->name }}</h1>
         </div>
         <div class="restaurant-image">
-        <img src="{{ $restaurant->image }}" alt="Image of {{ $restaurant->name }}">
+        <img src="{{ (preg_match('/^http/', $restaurant->image)) ? $restaurant->image : asset($restaurant->image) }}"  alt="Image of {{ $restaurant->name }}" />
         </div>
         <div class="restaurant-detail">
             @foreach($restaurant->areas as $area)
@@ -24,29 +29,24 @@
             <p>{{ $restaurant->description }}</p>
         </div>
     </div>
-    @if (session('msg'))
-        <div class="flash_message">
-            {{ session('msg') }}
-        </div>
-    @endif
     @if($show == 'reservation')
-        @if($route == 'mypageReview')
-        <div class="review-message">
-            <p>評価済みです</p>
-        </div>
-        @endif
         <div class="reservation-form">
-            <h2 class="reservation">予約</h2>
-            <form id="reservationForm" action="/reserve" method="post">
+            <div class="reservation-title">
+                <h2>予約</h2>
+            </div>
+            <form class="reservation-form-inner" action="/reserve" method="post">
                 @csrf
                 <input type="hidden" name="route" value="{{ $route }}">
                 <input type="hidden" name="restaurant_id" value="{{ $restaurant->id }}">
-                <input type="date" id="dateInput" name="date" value="{{ old('date') }}">
+                <div class="reservation-input">
+                    <input type="date" id="dateInput" name="date" value="{{ old('date') }}">
+                </div>
                 <p class="form__error-message">
                     @error('date')
                         {{ $message }}
                     @enderror
                 </p>
+                <div class="reservation-input">
                 <select name="time" id="timeInput" >
                     <option value="">時間を選択</option>
                         @foreach (range(9, 23) as $hour)
@@ -57,21 +57,24 @@
                                     $time = "{$hourFormatted}:" . str_pad($minuteFormatted, 2, '0', STR_PAD_LEFT);
                                     $reservationTime = isset($reservation) ? \Carbon\Carbon::parse($reservation->time)->format('H:i') : '';
                                 @endphp
-                               <option value="{{ $time }}" {{ old('time') == $time ? 'selected' : '' }}>{{ $time }}</option>
+                                <option value="{{ $time }}" {{ old('time') == $time ? 'selected' : '' }}>{{ $time }}</option>
                             @endforeach
                         @endforeach
                 </select>
+                </div>
                 <p class="form__error-message">
                     @error('time')
                         {{ $message }}
                     @enderror
                 </p>
+                <div class="reservation-input">
                 <select id="numberInput" name="number" >
                     <option value="">人数を選択</option>
                     @foreach (range(1, 10) as $number)
                         <option value="{{ $number }}"{{ old('number') == $number ? 'selected' : '' }}>{{ $number }}人</option>
                     @endforeach
                 </select>
+                </div>
                 <p class="form__error-message">
                     @error('number')
                         {{ $message }}
@@ -92,7 +95,7 @@
     @elseif($show == 'review')
         <div class="review-form">
             <h2 class="review">評価</h2>
-            <form class="reviewForm" action="/review" method="post">
+            <form class="review-form__inner" action="/review" method="post">
                 @csrf
                 <input type="hidden" name="restaurant_id" value="{{ $restaurant->id }}">
                     <div class="rating">
@@ -107,7 +110,9 @@
                         <input type="radio" name="rating" value="5" id="5">
                         <label for="5">★</label>
                     </div>
-                    <textarea class="comment-area"name="comment" rows="5" placeholder="コメントを書く" required></textarea>
+                    <div class ="comment-area">
+                        <textarea class="comment-inner"name="comment" rows="5" placeholder="コメントを書く" required></textarea>
+                    </div>
                     <button class="review-button">評価する</i></button>
             </form>
         </div>

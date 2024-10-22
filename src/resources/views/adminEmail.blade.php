@@ -7,7 +7,7 @@
 @section('content')
 <div class="container">
         <h1>ユーザーへの一斉メール送信</h1>
-        <form action="/admin/email" method="post">
+        <form class= "email-form" action="/admin/email" method="post">
             @csrf
             <div class="form-group">
                 <label for="subject">件名:</label>

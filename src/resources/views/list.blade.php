@@ -29,7 +29,8 @@
     </form>
 </div>
 </div>
-<div class="restaurant-list">
+<div class="restaurant-list-container">
+    <div class="restaurant-list">
     @foreach($restaurants as $restaurant)
     <div class="restaurant-card">
         <img  src="{{ (preg_match('/^http/', $restaurant->image)) ? $restaurant->image : asset($restaurant->image) }}" alt="Restaurant Image" class="restaurant-card__image">
@@ -61,6 +62,7 @@
         </div>
     </div>
     @endforeach
+    </div>
 </div>
 
 <script>

@@ -6,7 +6,14 @@
 @endsection
 
 @section('content')
-<form action="/payment" method="POST" id="payment-form">
+<script async src="https://js.stripe.com/v3/buy-button.js"></script>
+<div class="payment-form">
+    <stripe-buy-button buy-button-id="buy_btn_1QBRPbHvlMYyO94ep7iOwaXI"
+    publishable-key="pk_test_51Q8UoSHvlMYyO94eZfhM7wpMxilCZdnAGx9KNvWNSwF82UCk7GvJrRrufPdpcWehgbUqI6vFkA5mO0mfEiDDFzhA00V0z16r2e">
+    </stripe-buy-button>
+</div>
+@endsection
+<!-- <form action="/payment" method="POST" id="payment-form">
     @csrf
     <button id="customButton" class="btn btn-primary mt-5">
         支払い手続きへ進む
@@ -51,5 +58,4 @@
     window.addEventListener('popstate', function() {
         stripeHandler.close();
     });
-</script>
-@endsection
+</script> -->

@@ -1,0 +1,39 @@
+/* Center the form container but position it slightly higher */
+.payment-form {
+    min-height: 100vh;
+    /* Full screen height */
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    /* Horizontally center */
+    align-items: flex-start;
+    /* Align to the top */
+    padding-top: 100px;
+    /* Add space at the top to position slightly lower */
+    text-align: center;
+}
+
+stripe-buy-button {
+    width: 100%;
+    /* Make the button take full width */
+    max-width: 400px;
+    /* Limit max width */
+    margin: 0 auto;
+    display: block;
+}
+
+/* Responsive adjustments for max-width 768px */
+@media (max-width: 768px) {
+    .payment-form {
+        padding: 10px;
+        padding-top: 50px;
+        /* Adjust padding for smaller screens */
+    }
+
+    stripe-buy-button {
+        width: 100%;
+        /* Full width on smaller screens */
+        max-width: 300px;
+        /* Slightly reduce the max width */
+    }
+}

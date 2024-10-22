@@ -21,20 +21,12 @@ class MypageController extends Controller
             ->whereDate('date', '>=', now()->toDateString())
             ->get();
 
-        //過去の予約を取得
-        $pastReservations = Reservation::with(['restaurant'])
-            ->where('user_id', $user->id)
-            ->whereDate('date', '<', now()->toDateString())
-            ->groupBy('restaurant_id', 'user_id')
-            ->selectRaw('MAX(date) as date, restaurant_id, user_id')
-            ->get();
-
 
         $favorites = Favorite::with(['restaurant'])
             ->where('user_id', $user->id)
             ->get();
 
 
-        return view('mypage',compact('reservations','pastReservations', 'favorites', 'user'));
+        return view('mypage',compact('reservations','favorites', 'user'));
     }
 }

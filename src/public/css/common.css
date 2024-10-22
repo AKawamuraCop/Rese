@@ -1,9 +1,14 @@
 html, body {
     height: 100%;
     background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
 }
 
 .app {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -22,7 +27,7 @@ html, body {
 
 .header__heading {
     text-align: left;
-    margin-left: 50px;
+    /* margin-left: 50px; */
     color: #007bff;
 }
 
@@ -91,6 +96,7 @@ html, body {
     position: absolute;
     top: 20px;
     left: 50px;
+    right: auto;
     font-size: 20px;
     padding: 5px 10px;
     border-radius: 4px;
@@ -99,4 +105,34 @@ html, body {
     color: #fff;
     background-color:#007bff;
     /* Blue to match the links */
+}
+
+/* Media query for smaller screens (max-width: 768px) */
+@media (max-width: 768px) {
+    .header__heading {
+        font-size: 18px;
+    }
+
+    .fa-bars-staggered {
+        margin-right: 10px;
+        padding: 5px;
+        font-size: 18px;
+    }
+
+    .modal__inner {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .modal-link {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+
+    .modal__close-btn {
+        top: 10px;
+        left: 40px;
+        font-size: 18px;
+        padding: 5px;
+    }
 }

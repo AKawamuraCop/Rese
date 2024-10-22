@@ -1,21 +1,46 @@
-.qr-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+.qr-table {
+    width: 80%;
+        border-collapse: collapse;
+        margin: 20px auto;
+        font-size: 16px;
+        text-align: left;
 }
 
-.qr-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+/* Header of the table */
+.qr-table th, .qr-table td {
+    padding: 12px 15px;
+        border: 1px solid #ddd;
 }
 
-.qr-item {
+/* Table cells */
+.qr-table th {
     background-color: #007bff;
-    color: #fff;
-    padding: 10px;
-    margin-bottom: 10px;
-    text-align: center;
-    border-radius: 5px;
+        font-weight: bold;
+        color: #fff;
+}
+
+/* Zebra striping for rows */
+.qr-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .qr-table {
+        width: 90%;
+        /* Make the table take the full width of the screen */
+        font-size: 16px;
+        /* Adjust font size for readability */
+    }
+
+    .qr-table th,
+    .qr-table td {
+        padding: 8px 10px;
+        /* Reduce padding to fit smaller screens */
+    }
+
+    .qr-table th {
+        font-size: 12px;
+        /* Adjust header font size */
+    }
 }

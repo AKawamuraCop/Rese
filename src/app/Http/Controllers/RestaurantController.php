@@ -53,7 +53,7 @@ class RestaurantController extends Controller
             $show = 'review';
         }
         else
-        {
+        {//件数が等しい場合は、予約が可能になる
             $show = 'reservation';
         }
 
@@ -132,7 +132,7 @@ class RestaurantController extends Controller
 
     public function postRestaurantRegister(Request $request)
     {
-        // バリデーションを行う（必要に応じて追加）
+
         // 画像を保存し、そのパスを取得
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('public/images');
@@ -155,6 +155,7 @@ class RestaurantController extends Controller
                 // JSON形式の値をデコードして配列に変換
                 $genreData = json_decode($genre, true);
 
+                // ジャンルをレストランに紐付けて保存
                 Genre::create([
                     'number' => $genreData['number'],
                     'name' => $genreData['name'],

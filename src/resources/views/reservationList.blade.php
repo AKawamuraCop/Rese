@@ -11,7 +11,7 @@
             <th>Shop</th>
             <th>Date</th>
             <th>Time</th>
-            <th>Number of People</th>
+            <th>Number</th>
             <th>User</th>
         </tr>
         @foreach($reservations as $reservation)

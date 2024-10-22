@@ -1,0 +1,36 @@
+.email-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-control input{
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.email-form .form-control:focus {
+    border-color: #0056b3;
+    /* Focus color */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    /* Blue glow on focus */
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-radius: 4px;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #004085;
+}

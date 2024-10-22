@@ -15,6 +15,7 @@
     <div class="register-form__inner">
         <form class="register-form__form" action="/register" method="post">
             @csrf
+            <input type="hidden" name="auth" value="3">
             <div class="register-from__group">
                 <i class="fa fa-user"></i><input class="register-form__input" type="text" name="name" value="{{ old('name') }}" placeholder="Username">
                 <p class="register-form__error-message">

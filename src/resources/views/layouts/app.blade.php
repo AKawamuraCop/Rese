@@ -20,8 +20,7 @@
             <div class="modal-overlay"></div>
             <div class="modal__inner">
                     <div class="modal__content" >
-                        <a href="#" class="modal__close-btn">×
-                        </a>
+                        <a href="#" class="modal__close-btn">×</a>
                         @if(Auth::check() && Auth::user()->hasVerifiedEmail())
                         <ul>
                             <li><a class="modal-link" href="/list">Home</a></li>

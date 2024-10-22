@@ -71,30 +71,6 @@
                     <p>予約はありません</p>
                 @endif
             </div>
-            <h1 class="title">予約履歴のあるレストラン</h1>
-            <p>レストラン詳細ページから評価をお願い致します</p>
-            <div class="booking-details">
-                @if($pastReservations && $pastReservations->isNotEmpty())
-                    @foreach($pastReservations as $pastReservation)
-                        <div class="booking-details-card">
-                            <table>
-                                <tr>
-                                    <td><strong>Shop</strong></td>
-                                    <td>{{ $pastReservation->restaurant->name }}</td>
-                                </tr>
-                            </table>
-                            <form class="review-form" action="/restaurant/detail" method="get">
-                                @csrf
-                                <input type="hidden" name="restaurant_id" value="{{ $pastReservation->restaurant->id }}">
-                                <input type="hidden" name="route" value="mypageReview">
-                                <button class="review-button">詳しくみる</i></button>
-                            </form>
-                        </div>
-                    @endforeach
-                @else
-                    <p>過去履歴はありません</p>
-                @endif
-            </div>
         </div>
         <div class="restaurant-list">
             <h1 class="title">お気に入り店舗</h1>

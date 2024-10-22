@@ -1,8 +1,7 @@
 .complete-page {
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    padding-top: 20vh;
     background-color: #f5f5f5;
 }
 
@@ -34,4 +33,23 @@
 
 .button:hover {
     background-color: #1558b8;
+}
+
+@media (max-width: 768px) {
+    .done-page {
+        padding-top: 10vh;
+    }
+
+    .done-page__inner {
+        padding: 20px;
+    }
+
+    .done-message {
+        font-size: 20px;
+    }
+
+    .button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
 }

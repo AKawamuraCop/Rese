@@ -1,14 +1,9 @@
 .login-form {
     max-width: 450px;
-    /* フォームの最大幅を設定 */
     margin: 50px auto;
-    /* 上下の余白を設定し、中央に配置 */
     background-color: #fff;
-    /* 背景色を白に設定 */
     border-radius: 5px;
-    /* 角を丸くする */
     box-shadow: 3px 3px 3px 0px rgba(0, 0, 0, 0.31);
-    /* ボックスの影を設定 */
 }
 
 .login-form__heading {
@@ -102,4 +97,44 @@
     color: gray;
     font-size: 20px;
     vertical-align: bottom
+}
+
+/* Media query for smaller screens (max-width: 768px) */
+@media (max-width: 768px) {
+    .login-form {
+        max-width: 80%;
+        margin: 50px auto;
+    }
+
+    .login-form__heading {
+        font-size: 20px;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .login-form__input {
+        width: calc(100% - 20px);
+        margin-left: 5px;
+    }
+
+    .login-form__btn {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .form__btn {
+        text-align: center;
+    }
+
+    .login-from__group {
+        margin-bottom: 10px;
+    }
+
+    .login-form__inner {
+        padding: 10px;
+    }
+
+    .fa {
+        font-size: 18px;
+    }
 }

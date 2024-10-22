@@ -201,70 +201,60 @@ td:first-child {
     color: #fff;
 }
 
-/* 繝｡繝�ぅ繧｢繧ｯ繧ｨ繝ｪ縺ｧ繝ｬ繧ｹ繝昴Φ繧ｷ繝門ｯｾ蠢� */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
     .main-content {
         flex-direction: column;
-        padding: 5px 40px;
-    }
-
-    .restaurant-details {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .restaurant-card {
-        width: 100%;
+        align-items: center;
+        padding: 5px 20px;
     }
 
     .booking-info,
     .restaurant-list {
-        flex: 1;
         width: 100%;
-        padding: 10px;
-    }
-}
-
-@media (max-width: 768px) {
-    .user-title {
-        font-size: 24px;
+        padding: 10px 0;
     }
 
-    .title {
-        font-size: 20px;
+    .restaurant-details {
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: space-between;
+        /* Ensure space is distributed between cards */
+    }
+
+    .restaurant-card {
+        width: calc(50% - 10px);
+        /* Two columns */
+        margin-bottom: 15px;
+    }
+
+    .restaurant-card__image {
+        height: 120px;
     }
 
     .restaurant-title {
         font-size: 16px;
     }
 
-    .details-button {
+    .restaurant-tag {
+        font-size: 12px;
+    }
+
+    .details-button,
+    .update-button,
+    .review-button {
+        font-size: 14px;
         padding: 6px 10px;
     }
 
-    .restaurant-card__image {
-        height: 120px;
-    }
-}
-
-@media (max-width: 480px) {
-    .main-content {
-        padding: 5px 20px;
-    }
-
-    .user-title {
-        font-size: 20px;
-    }
-
-    .restaurant-title {
+    .reservation-form select,
+    .reservation-form input[type=date] {
+        width: 100%;
+        margin-left: 0;
+        padding: 8px;
         font-size: 14px;
     }
 
-    .restaurant-card__image {
-        height: 100px;
-    }
-
-    .details-button {
-        padding: 4px 8px;
+    .favorite_btn {
+        font-size: 24px;
     }
 }

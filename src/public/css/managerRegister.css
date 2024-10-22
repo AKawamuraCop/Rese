@@ -74,3 +74,42 @@
 .register-from__group:last-child .register-form__input {
     margin-left: 20px;
 }
+
+@media (max-width: 768px) {
+    .register-form {
+        max-width: 80%;
+        margin: 50px auto;
+    }
+
+    .register-form__heading {
+        font-size: 20px;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .register-form__input {
+        width: calc(100% - 20px);
+        margin-left: 5px;
+    }
+
+    .register-form__inner {
+        padding: 10px;
+    }
+
+    .form__btn {
+        text-align: center;
+    }
+
+    .register-form__btn {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .register-from__group {
+        margin-bottom: 10px;
+    }
+
+    .fa {
+        font-size: 18px;
+    }
+}

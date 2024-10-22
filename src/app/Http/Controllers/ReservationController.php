@@ -77,6 +77,7 @@ class ReservationController extends Controller
             $qrData = $qrDecode; // 既に配列であればそのまま使用
         }
 
+
         // デコードしたデータをビューに渡す
         return view('reservationCheck', Compact('qrData'));
     }
