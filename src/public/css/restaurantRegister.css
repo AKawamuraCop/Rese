@@ -14,6 +14,10 @@
     text-decoration: none;
 }
 
+.update-btn:hover {
+    background-color: #003570;
+}
+
 .restaurant-form {
     max-width: 600px;
     margin: 0 auto;
@@ -68,10 +72,15 @@
 }
 
 .submit-btn:hover {
-    background-color: #218838;
+    background-color: #003570;
+}
+
+.error-message {
+    color: #FF9494;
 }
 
 @media (max-width: 768px) {
+    
     .restaurant-form {
         padding: 15px;
         max-width: 100%;

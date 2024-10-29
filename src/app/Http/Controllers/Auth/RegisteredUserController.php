@@ -13,7 +13,7 @@ use Illuminate\Auth\Events\Registered;
 class RegisteredUserController extends Controller
 {
 
-    protected $redirectTo = '/thanks'; // 登録後のリダイレクト先
+    protected $redirectTo = '/thanks';
 
     public function __construct()
     {
@@ -28,10 +28,6 @@ class RegisteredUserController extends Controller
 
         // イベントを発行して、確認メールを送信
         event(new Registered($user));
-
-        // Optionally log in the user
-        // Auth::login($user);
-        //Mail::to($user->email)->send(new \App\Mail\WelcomeMail($user));
 
         return redirect($this->redirectTo);
     }

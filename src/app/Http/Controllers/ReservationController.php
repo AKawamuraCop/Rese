@@ -16,6 +16,7 @@ class ReservationController extends Controller
     {
         $userId = auth()->id();
         $route = $request->route;
+        $restaurantId = $request->input('restaurant_id');
 
         Reservation::create([
                 'user_id' => $userId,
@@ -26,7 +27,7 @@ class ReservationController extends Controller
 
         ]);
 
-        return view('done',compact('route'));
+        return view('done',compact('restaurantId','route'));
 
     }
 
@@ -35,7 +36,7 @@ class ReservationController extends Controller
     {
         Reservation::find($request->reservation_id)->delete();
 
-        return redirect('/mypage');
+        return redirect('/mypage')->with('result','予約を取り消しました');;
 
     }
 
@@ -53,7 +54,7 @@ class ReservationController extends Controller
             } else {
                 return redirect()->back()->withErrors('Reservation not found or unauthorized.');
             }
-        return redirect('/mypage')->withResult('予約を変更しました');
+        return redirect('/mypage')->with('result','予約を変更しました');
 
     }
 
@@ -65,7 +66,6 @@ class ReservationController extends Controller
 
     public function getReservationCheck(Request $request)
     {
-        // QRコードデータがクエリパラメータとして渡されることを想定
         $qrCodeData = $request->get('data');
 
         // JSON形式のデータをデコード
@@ -77,8 +77,6 @@ class ReservationController extends Controller
             $qrData = $qrDecode; // 既に配列であればそのまま使用
         }
 
-
-        // デコードしたデータをビューに渡す
         return view('reservationCheck', Compact('qrData'));
     }
 }

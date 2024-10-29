@@ -7,18 +7,29 @@
 @section('content')
 @if (session('msg'))
 <div class="flash_message">
-  {{ session('msg') }}
+    {{ session('msg') }}
 </div>
 @endif
 <div class="detail-container">
     <div class = "restaurant-info">
         <div class="restaurant-title">
+            @if($route == "list")
             <a href="/list" class="btn btn-secondary">＜</a>
+            @elseif($route == "mypage")
+            <a href="/mypage" class="btn btn-secondary">＜</a>
+            @endif
             <h1 class="restaurant-head">{{ $restaurant->name }}</h1>
         </div>
+        @if($restaurant->image)
         <div class="restaurant-image">
-        <img src="{{ (preg_match('/^http/', $restaurant->image)) ? $restaurant->image : asset($restaurant->image) }}"  alt="Image of {{ $restaurant->name }}" />
+            <img src="{{ preg_match('/^http/', $restaurant->image) ? $restaurant->image : asset($restaurant->image) }}" alt="Restaurant Image" class="restaurant-card__image">
         </div>
+        @else
+        <div class="image-default">
+            <i class="fa-solid fa-image"></i>
+        </div>
+        @endif
+
         <div class="restaurant-detail">
             @foreach($restaurant->areas as $area)
                 <span class="tag">#{{ $area->name }}</span>
@@ -68,12 +79,12 @@
                     @enderror
                 </p>
                 <div class="reservation-input">
-                <select id="numberInput" name="number" >
-                    <option value="">人数を選択</option>
-                    @foreach (range(1, 10) as $number)
-                        <option value="{{ $number }}"{{ old('number') == $number ? 'selected' : '' }}>{{ $number }}人</option>
-                    @endforeach
-                </select>
+                    <select id="numberInput" name="number" >
+                        <option value="">人数を選択</option>
+                        @foreach (range(1, 10) as $number)
+                            <option value="{{ $number }}"{{ old('number') == $number ? 'selected' : '' }}>{{ $number }}人</option>
+                        @endforeach
+                    </select>
                 </div>
                 <p class="form__error-message">
                     @error('number')
@@ -88,7 +99,6 @@
                         <p id="selectedNumber">Number <span></span></p>
                     </div>
                 </div>
-                <input type="hidden" name="route" value="list">
                 <button type="submit">予約する</button>
             </form>
         </div>
@@ -120,7 +130,7 @@
     @if($qrCode)
     <div class="qr-code-section">
         <h3>QRコードで予約情報を確認</h3>
-        {!! $qrCode !!}
+            {!! $qrCode !!}
         <div id="reader" style="width: 250px; height: 250px;"></div>
     </div>
     @endif

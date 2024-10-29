@@ -1,4 +1,3 @@
-/* Container for all content */
 .detail-container {
     display: flex;
     justify-content: space-around;
@@ -29,7 +28,6 @@
     box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.354);
 }
 
-/* Restaurant Info and Image */
 .restaurant-info {
     display: flex;
     flex-direction: column;
@@ -38,7 +36,6 @@
     height: 100%;
 }
 
-/* Restaurant header: title and button */
 .restaurant-header {
     display: flex;
     align-items: center;
@@ -49,11 +46,8 @@
 .restaurant-title {
     color: #333;
     font-size: 30px;
-    /* margin-right: 20px; */
-    /* Adds space between title and button */
 }
 
-/* Reservation button */
 .reservation-btn {
     background-color: #ffcc00;
     color: #333;
@@ -68,14 +62,21 @@
     background-color: #e6b800;
 }
 
-/* Restaurant Image */
 .restaurant-image img {
     width: 100%;
     max-width: 90%;
     height: auto;
 }
 
-/* Restaurant Detail */
+.image-default {
+    width: 100%;
+        max-width: 90%;
+        height: auto;
+    color: gray;
+    font-size: 90px;
+
+}
+
 .restaurant-detail {
     text-align: left;
     margin-top: 20px;
@@ -97,7 +98,6 @@
     display: block;
 }
 
-/* Reservation Form Styling */
 .reservation-form,
 .review-form {
     background-color: #007bff;
@@ -108,18 +108,17 @@
     margin-top: 50px;
     display: flex;
     justify-content: center;
-            /* 中央揃え */
-            align-items: center;
-            /* 縦方向中央揃え */
-            flex-direction: column;
-            /* 要素を縦に並べる */
+    align-items: center;
+    flex-direction: column;
 
 }
+
 .reservation-title{
     width: 100%;
     padding: 0 30px;
 
 }
+
 .review-form__inner{
     width: 100%;
     align-items: center;
@@ -148,9 +147,7 @@
     width: 100%;
     margin: 0 auto;
     padding: 10px;
-
     font-size: 16px;
-    /* border: 1px solid #ccc; */
     border-radius: 5px;
     resize: vertical;
 }
@@ -158,6 +155,7 @@
 .reservation-form-inner{
     width: 100%;
 }
+
 .reservation-form select,
 .reservation-form input[type=date] {
     width: 100%;
@@ -186,13 +184,12 @@
 }
 #summary p {
     margin: 10px 0;
-    /* 上下にスペースを追加 */
 }
 
 #summary span {
     margin-left: 30px;
-    /* タイトルと値の間にスペースを追加 */
 }
+
 .rating {
     direction: rtl;
     display: flex;
@@ -216,8 +213,6 @@
 .rating input:hover~label {
     color: gold;
 }
-
-
 .form__error-message {
     margin-top: 8px;
     margin-left: 35px;
@@ -232,6 +227,9 @@
 #summary {
     color: #ffffff;
     margin-top: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .summary-card {
@@ -269,20 +267,19 @@
     .restaurant-info {
         width: 100%;
     }
-.restaurant-title {
-    display: flex;
-    align-items: center;
-}
+    .restaurant-title {
+        display: flex;
+        align-items: center;
+    }
 
-.restaurant-title a {
-    margin-right: 10px;
-    font-size: 15px;
-}
+    .restaurant-title a {
+        margin-right: 10px;
+        font-size: 15px;
+    }
 
-.restaurant-head {
-    font-size: 30px;
-}
-
+    .restaurant-head {
+        font-size: 30px;
+    }
 
     .restaurant-image img {
         width: 100%;
@@ -292,10 +289,9 @@
 
     .restaurant-detail {
         width: 100%;
-    text-align: left;
+        text-align: left;
         margin-top: 15px;
     }
-
 
     .tag {
         font-size: 14px;
@@ -307,11 +303,8 @@
         margin-top: 20px;
         display: flex;
         justify-content: center;
-        /* 中央揃え */
         align-items: center;
-        /* 縦方向中央揃え */
         flex-direction: column;
-        /* 要素を縦に並べる */
     }
 
     .reservation-form h2,
@@ -324,10 +317,12 @@
         width: 100%;
         margin: 0 auto;
     }
+
     .comment-area {
-    width: 100%;
-    padding: 0 20px;
+        width: 100%;
+        padding: 0 20px;
     }
+
     .comment-inner {
         width: 100%;
         margin: 0 auto;
@@ -341,8 +336,8 @@
     .review-form button {
         width: 100%;
         margin: 0 auto;
-
     }
+
     .comment-area {
         width: 100%;
         margin: 0 auto;

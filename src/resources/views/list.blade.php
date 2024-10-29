@@ -33,7 +33,13 @@
     <div class="restaurant-list">
     @foreach($restaurants as $restaurant)
     <div class="restaurant-card">
-        <img  src="{{ (preg_match('/^http/', $restaurant->image)) ? $restaurant->image : asset($restaurant->image) }}" alt="Restaurant Image" class="restaurant-card__image">
+        @if($restaurant->image)
+            <img src="{{ preg_match('/^http/', $restaurant->image) ? $restaurant->image : asset($restaurant->image) }}" alt="Restaurant Image" class="restaurant-card__image">
+        @else
+        <div class="image-default">
+            <i class="fa-solid fa-image"></i>
+        </div>
+        @endif
         <div class="restaurant-info">
             <h2 class="restaurant-title">{{ $restaurant->name }}</h2>
             <div class="restaurant-tag">
@@ -53,7 +59,6 @@
                 <form class="favorite-form" action="/favorite" method="post"> 
                     @csrf
                     <input type="hidden" name="restaurant_id" value="{{ $restaurant->id }}">
-                    <input type="hidden" name="route" value="list">
                     <button class="favorite_btn">
                         <i class="fa-solid fa-heart {{ $favorites->contains('restaurant_id', $restaurant->id) ? 'favorite' : 'not-favorite' }}"></i>
                     </button>

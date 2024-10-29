@@ -12,6 +12,7 @@ use App\Models\Review;
 use App\Http\Controllers\ReservationController;
 use Illuminate\Support\Facades\Storage;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use App\Http\Requests\RestaurantRequest;
 
 class RestaurantController extends Controller
 {
@@ -84,8 +85,7 @@ class RestaurantController extends Controller
                     'data' => json_encode($qrCodeData)
                 ]);
 
-                // QRコードを生成するためのライブラリを使用（例: Simple QR Code Generator）
-                $qrCode = QrCode::generate($encodedData); // QrCodeは使用するライブラリに応じて変更
+                $qrCode = QrCode::generate($encodedData);
             }
 
         }else{
@@ -130,7 +130,7 @@ class RestaurantController extends Controller
         return view('restaurantRegister', compact('restaurant'));
     }
 
-    public function postRestaurantRegister(Request $request)
+    public function postRestaurantRegister(RestaurantRequest $request)
     {
 
         // 画像を保存し、そのパスを取得
@@ -143,7 +143,7 @@ class RestaurantController extends Controller
         }
         // Restaurantのデータを保存し、そのIDを取得
         $restaurant = Restaurant::create([
-                'name' => $request->input('restaurant_name'),
+                'name' => $request->input('name'),
                 'description' => $request->input('description'),
                 'image' => $imagePath
         ]);
@@ -179,7 +179,7 @@ class RestaurantController extends Controller
                 ]);
             }
         }
-        return redirect()->back()->with('success', 'Restaurant registered successfully.');
+        return redirect()->back()->with('result', '登録が完了しました');
 
     }
 
@@ -200,7 +200,7 @@ class RestaurantController extends Controller
     }
 
 
-    public function postRestaurantUpdate(Request $request)
+    public function postRestaurantUpdate(RestaurantRequest $request)
     {
         // 画像を保存し、そのパスを取得
         if ($request->hasFile('image')) {
@@ -248,10 +248,11 @@ class RestaurantController extends Controller
         }
 
         // 削除対象のジャンルの処理
-        $newGenreIds = array_column(array_map('json_decode', $genres), 'number');  // 新しいジャンルのIDを配列に変換
+        $genres = $genres ?? [];  // $genresがnullなら空配列にする
+        $newGenreNumbers = array_column(array_map('json_decode', $genres), 'number');  // 新しいジャンルのIDを配列に変換
         foreach ($existGenres as $existGenre) {
             // 新しいジャンルの中に既存のジャンルがなければ削除
-            if (!in_array($existGenre->number, $newGenreIds)) {
+            if (!in_array($existGenre->number, $newGenreNumbers)) {
                 $existGenre->delete();
             }
         }
@@ -279,15 +280,17 @@ class RestaurantController extends Controller
         }
 
         // 削除対象のエリアの処理
-        $newAreaIds = array_column(array_map('json_decode', $areas), 'id');  // 新しいジャンルのIDを配列に変換
+        $areas = $areas ?? [];  // $areasがnullなら空配列にする
+
+        $newAreaNumbers = array_column(array_map('json_decode', $areas), 'number');  // 新しいジャンルのIDを配列に変換
         foreach ($existAreas as $existArea) {
             // 新しいエリアの中に既存のエリアがなければ削除
-            if (!in_array($existArea->number, $newAreaIds)) {
+            if (!in_array($existArea->number, $newAreaNumbers)) {
                 $existArea->delete();
             }
         }
 
-        return redirect()->back()->with('success', 'Restaurant registered successfully.');
+        return redirect()->back()->with('result', '更新が完了しました');
 
     }
 }

@@ -15,12 +15,6 @@ class AdminController extends Controller
 
     public function sendEmail(Request $request)
     {
-        // バリデーション
-        $request->validate([
-            'subject' => 'required|string|max:255',
-            'message' => 'required|string',
-        ]);
-
         // 全ユーザーを取得
         $users = User::all();
 
@@ -32,7 +26,7 @@ class AdminController extends Controller
             });
         }
 
-        return redirect()->back()->with('success', 'メールが送信されました！');
+        return redirect()->back()->with('result', 'メールが送信されました！');
     }
 }
 

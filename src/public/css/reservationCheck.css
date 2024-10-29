@@ -6,41 +6,33 @@
         text-align: left;
 }
 
-/* Header of the table */
 .qr-table th, .qr-table td {
     padding: 12px 15px;
         border: 1px solid #ddd;
 }
 
-/* Table cells */
 .qr-table th {
     background-color: #007bff;
         font-weight: bold;
         color: #fff;
 }
 
-/* Zebra striping for rows */
 .qr-table tbody tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-/* Responsive design */
 @media (max-width: 768px) {
     .qr-table {
         width: 90%;
-        /* Make the table take the full width of the screen */
         font-size: 16px;
-        /* Adjust font size for readability */
     }
 
     .qr-table th,
     .qr-table td {
         padding: 8px 10px;
-        /* Reduce padding to fit smaller screens */
     }
 
     .qr-table th {
         font-size: 12px;
-        /* Adjust header font size */
     }
 }

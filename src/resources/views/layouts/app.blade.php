@@ -6,7 +6,7 @@
     <title>Rese</title>
     <link rel="stylesheet" href= "{{ asset('css/sanitize.css') }}">
     <link rel="stylesheet" href=" {{ asset('css/common.css') }}">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     @yield('css')
 </head>
 
@@ -26,7 +26,7 @@
                             <li><a class="modal-link" href="/list">Home</a></li>
                             <li><a class="modal-link" href="/logout">Logout</a></li>
                             <li><a class="modal-link" href="/mypage">Mypage</a></li>
-                            <li><a class="modal-link" href="/payment">Payment</a></li>
+                            <li><a class="modal-link" href="/payment">Subscription</a></li>
                             @if(Auth::user()->auth == 1)
                                 <li><a class="modal-link" href="/manager/register">Manager Registration</a></li>
                                 <li><a class="modal-link" href="/admin/email">Send Mass Email</a></li>

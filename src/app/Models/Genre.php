@@ -12,7 +12,7 @@ class Genre extends Model
 
     protected $guarded = ['id'];
 
-        protected $fillable = ['number','name','restaurant_id'];
+    protected $fillable = ['number','name','restaurant_id'];
 
     public function restaurant()
     {

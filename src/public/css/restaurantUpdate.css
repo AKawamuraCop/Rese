@@ -76,7 +76,7 @@
 }
 
 .submit-btn:hover {
-    background-color: #218838;
+    background-color: #0056b3;
 }
 .return-btn {
     display: inline-block;
@@ -96,6 +96,7 @@
 }
 
 @media (max-width: 768px) {
+    
     .restaurant-form {
         padding: 15px;
         max-width: 100%;

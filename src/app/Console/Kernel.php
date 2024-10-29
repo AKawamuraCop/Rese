@@ -13,7 +13,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
 
         // 毎日午前0時にジョブを実行
         $schedule->command('app:send-emails')
@@ -27,6 +26,5 @@ class Kernel extends ConsoleKernel
     {
         $this->load(__DIR__.'/Commands');
 
-        //require base_path('routes/console.php');
     }
 }

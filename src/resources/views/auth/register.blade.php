@@ -32,7 +32,7 @@
                     @enderror
                 </p>
             </div>
-            <div class="register-from__group">
+            <div class="register-form__group">
                 <i class="fa fa-lock"></i><input class="register-form__input" type="password" name="password" placeholder="Password">
                 <p class="register-form__error-message">
                     @error('password')

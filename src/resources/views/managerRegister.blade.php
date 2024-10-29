@@ -7,7 +7,7 @@
 @section('content')
 @if (session('result'))
 <div class="flash_message">
-  {{ session('result') }}
+    {{ session('result') }}
 </div>
 @endif
 <div class="register-form">
@@ -20,7 +20,7 @@
                 <i class="fa fa-user"></i><input class="register-form__input" type="text" name="name" value="{{ old('name') }}" placeholder="Username">
                 <p class="register-form__error-message">
                     @error('name')
-                    {{ $message }}
+                        {{ $message }}
                     @enderror
                 </p>
             </div>
@@ -28,7 +28,7 @@
                 <i class="fa fa-envelope"></i><input class="register-form__input" type="mail" name="email" value="{{ old('email') }}" placeholder="Email">
                 <p class="register-form__error-message">
                     @error('email')
-                    {{ $message }}
+                        {{ $message }}
                     @enderror
                 </p>
             </div>
@@ -36,7 +36,7 @@
                 <i class="fa fa-lock"></i><input class="register-form__input" type="password" name="password" placeholder="Password">
                 <p class="register-form__error-message">
                     @error('password')
-                    {{ $message }}
+                        {{ $message }}
                     @enderror
                 </p>
             </div>

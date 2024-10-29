@@ -6,17 +6,18 @@
 }
 .search-bar-box{
     background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        width: 600px;
-        text-align: center;
-        overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 600px;
+    text-align: center;
+    overflow: hidden;
 }
+
 .search-form {
     display: flex;
-    width: 80%; /* 画像に基づいて調整 */
+    width: 80%;
     align-items: center;
-    justify-content: space-between; /* 要素間に均等な間隔を設定 */
+    justify-content: space-between;
 }
 
 .search-dropdown {
@@ -24,7 +25,7 @@
     margin-right: 5px;
     border: none;
     border-radius: 5px;
-    width: 50%; /* ドロップダウンの幅を調整 */
+    width: 50%;
 
 }
 
@@ -49,7 +50,6 @@
     border: none;
     outline: none;
     width: calc(100% - 30px);
-    /* アイコンのスペースを考慮 */
 }
 
 .restaurant-list-container {
@@ -77,28 +77,44 @@
 
 .restaurant-info {
     text-align: left;
-    /* 左寄せ */
     padding: 15px;
 }
 
 .restaurant-title {
     font-size: 1.8rem;
-    /* レストラン名を大きめに */
     font-weight: bold;
     margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .tag {
     font-size: 0.9rem;
-    /* ハッシュタグを小さめに */
     color: #666;
     margin-right: 5px;
+}
+
+.restaurant-tag{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 20px;
 }
 
 .restaurant-card__image {
     width: 100%;
     aspect-ratio: 16/9;
     object-fit: cover;
+}
+
+.image-default{
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    color: gray;
+    font-size: 90px;
+
 }
 
 .restaurant-card__name {
@@ -121,6 +137,7 @@
     color: #fff;
     border: none;
     text-decoration: none;
+    cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s;
 }
@@ -145,16 +162,9 @@
 
 }
 
-@media (max-width: 1280px) {
-    .restaurant-list-container {
-            align-items: center;
-            text-align: center;
-            margin: 0 auto;
-        }
-    }
-    
-/* Media query for screens with max width of 768px */
+
 @media (max-width: 768px) {
+
     .search-bar {
         justify-content: center;
         padding: 10px;
@@ -182,7 +192,7 @@
 
 
     .restaurant-list {
-        justify-content: center;
+        justify-content: flex-start;
         padding: 10px;
     }
 
@@ -207,12 +217,11 @@
         margin-top: 10px;
     }
 
-
-.form-button {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+    .form-button {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
 
     .favorite_btn {
         font-size: 25px;

@@ -15,8 +15,8 @@
     <div class="login-form__inner">
         <form class="login-form__form" action="/login" method="post">
             @csrf
-            <div class="login-from__group">
-                <i class="fa fa-envelope"></i><input class="login-form__input" type="email" name="email" value="{{ old('email') }}" placeholder="Email">
+            <div class="login-form__group">
+                <i class="fa fa-envelope"></i><input class="login-form__input" type="mail" name="email" value="{{ old('email') }}" placeholder="Email">
                 <p class="login-form__error-message">
                     @error('email')
                     {{ $message }}

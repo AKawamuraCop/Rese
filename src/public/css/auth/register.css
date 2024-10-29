@@ -20,7 +20,7 @@
     padding: 20px;
 }
 
-.register-from__group {
+.register-form__group {
     margin-bottom: 15px;
 }
 
@@ -42,6 +42,7 @@
     text-align: right;
     margin-top: 20px;
 }
+
 .register-form__btn {
     width: 50px;
     margin-right: 20px;
@@ -68,7 +69,6 @@
     font-size: 20px;
     vertical-align: bottom
 }
-
 
 .register-from__group:last-child .register-form__input {
     margin-left: 20px;

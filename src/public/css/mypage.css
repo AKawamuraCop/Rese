@@ -90,16 +90,13 @@ td:first-child {
 
 .restaurant-title {
     font-size: 18px;
-    /* 繝ｬ繧ｹ繝医Λ繝ｳ蜷阪�繝輔か繝ｳ繝医し繧､繧ｺ */
     font-weight: bold;
-    /* 螟ｪ蟄励↓ */
     margin-top: 8px;
     margin-bottom: 3px;
 }
 
 .restaurant-tag {
     font-size: 14px;
-    /* 繧ｿ繧ｰ縺ｮ繝輔か繝ｳ繝医し繧､繧ｺ */
     color: #666;
     margin-bottom: 15px;
 }
@@ -195,13 +192,9 @@ td:first-child {
     background-color: #0056b3;
 }
 
-.flash_message {
-    margin-bottom: 50px;
-    padding: 10px 0;
-    color: #fff;
-}
 
 @media (max-width: 768px) {
+
     .main-content {
         flex-direction: column;
         align-items: center;
@@ -218,12 +211,10 @@ td:first-child {
         flex-wrap: wrap;
         gap: 15px;
         justify-content: space-between;
-        /* Ensure space is distributed between cards */
     }
 
     .restaurant-card {
         width: calc(50% - 10px);
-        /* Two columns */
         margin-bottom: 15px;
     }
 

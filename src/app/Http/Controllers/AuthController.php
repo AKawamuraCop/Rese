@@ -102,7 +102,7 @@ class AuthController extends Controller
         if (Auth::attempt(['email' => $request['email'], 'password' => $request['password']])) {
             return redirect('list');
         } else {
-            return redirect('login')->with('result', 'メールアドレスまたはパスワードが間違っております');
+            return redirect('login')->with('result', 'メールアドレスまたはパスワードが間違っています');
         }
     }
 

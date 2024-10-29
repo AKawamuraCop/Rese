@@ -62,7 +62,6 @@
     color: red;
     font-size: 0.9em;
     margin-top: 5px;
-
 }
 
 .fa {
@@ -76,6 +75,7 @@
 }
 
 @media (max-width: 768px) {
+    
     .register-form {
         max-width: 80%;
         margin: 50px auto;

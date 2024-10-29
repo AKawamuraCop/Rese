@@ -5,6 +5,11 @@
 @endsection
 
 @section('content')
+@if (session('result'))
+<div class="flash_message">
+    {{ session('result') }}
+</div>
+@endif
 <div class="container">
         <h1>ユーザーへの一斉メール送信</h1>
         <form class= "email-form" action="/admin/email" method="post">
