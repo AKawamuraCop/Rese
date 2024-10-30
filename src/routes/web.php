@@ -12,7 +12,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\PaymentsController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,7 +46,7 @@ Route::middleware('auth','verified')->group(function(){
     Route::post('/reservation/destroy',[ReservationController::class,'destroy']);
     Route::put('/reservation/update',[ReservationController::class,'update']);
     Route::post('/review',[ReviewController::class,'store']);
-    Route::get('reservation/list',[ReservationController::class,'getList']);
+    Route::get('/reservation/list',[ReservationController::class,'getList']);
     Route::get('/restaurant/register',[RestaurantController::class,'getRestaurantRegister']);
     Route::post('/restaurant/register',[RestaurantController::class,'postRestaurantRegister']);
     Route::get('/manager/register',[AuthController::class,'getManagerRegister']);
@@ -57,8 +57,8 @@ Route::middleware('auth','verified')->group(function(){
     Route::get('/reservation/check',[ReservationController::class,'getReservationCheck'])->name('reservation.check');
     Route::get('/admin/email',[AdminController::class, 'showEmailForm']);
     Route::post('/admin/email',[AdminController::class, 'sendEmail']);
-    Route::get('/payment',[PaymentsController::class,'getPayment']);
-    Route::post('/payment',[PaymentsController::class,'postPayment']);
-    Route::get('/payment/complete',[PaymentsController::class,'completePayment']);
+    Route::get('/payment',[PaymentController::class,'getPayment']);
+    Route::post('/payment',[PaymentController::class,'postPayment']);
+    Route::get('/payment/complete',[PaymentController::class,'completePayment']);
 });
 

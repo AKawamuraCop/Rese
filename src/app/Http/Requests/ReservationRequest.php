@@ -16,7 +16,7 @@ class ReservationRequest extends FormRequest
         return [
             'date' => ['required','date','after_or_equal:today'],
             'time' => ['required'],
-            'number' => ['required']
+            'number' => ['required','integer']
         ];
     }
 }
