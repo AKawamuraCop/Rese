@@ -1,7 +1,7 @@
 # アプリケーション名
 ### Rese
 ある企業のグループ会社の飲食店予約サービス
-![alt text](image.png)
+![alt text](image-2.png)
 
 ## 概要説明
 外部の飲食店予約サービスは手数料を取られるので自社で予約サービスを持ちたい
@@ -36,7 +36,7 @@ _一般ユーザー_
 -   MySQL 8.0.26
 
 ## テーブル設計
-![alt text](image-2.png)
+![alt text](image.png)
 
 ## ER 図
 ![alt text](image-1.png)
