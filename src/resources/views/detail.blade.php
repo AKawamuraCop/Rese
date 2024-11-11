@@ -109,7 +109,7 @@
                 @csrf
                 <input type="hidden" name="restaurant_id" value="{{ $restaurant->id }}">
                     <div class="rating">
-                        <input type="radio" name="rating" value="1" id="1" required>
+                        <input type="radio" name="rating" value="1" id="1">
                         <label for="1">★</label>
                         <input type="radio" name="rating" value="2" id="2">
                         <label for="2">★</label>
@@ -121,7 +121,7 @@
                         <label for="5">★</label>
                     </div>
                     <div class ="comment-area">
-                        <textarea class="comment-inner"name="comment" rows="5" placeholder="コメントを書く" required></textarea>
+                        <textarea class="comment-inner"name="comment" rows="5" placeholder="コメントを書く"></textarea>
                     </div>
                     <button class="review-button">評価する</i></button>
             </form>

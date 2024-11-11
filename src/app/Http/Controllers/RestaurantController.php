@@ -63,7 +63,7 @@ class RestaurantController extends Controller
         {
             // 予約が存在する場合、QRコードを生成
             $reservations = Reservation::where('restaurant_id', $restaurant->id)
-                        ->whereDate('date', '>', now()->toDateString())
+                        ->whereDate('date', '=', now()->toDateString())
                         ->get();
 
             $qrCode = null;
