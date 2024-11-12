@@ -38,7 +38,7 @@ _店舗代表者のみの機能_
 -   MySQL 8.0.26
 
 ## テーブル設計
-![alt text](image.png)
+![alt text](image-3.png)
 
 ## ER 図
 ![alt text](image-1.png)
@@ -106,7 +106,7 @@ php artisan db:seed
 管理者  
 
 ## URL
-・開発環境：http://localhost/
+・開発環境：http://localhost/  
 ・phpMyAdmin : http://localhost:8080/
 
 ## その他
