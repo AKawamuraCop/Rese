@@ -3,7 +3,7 @@
     justify-content: space-around;
     align-items: flex-start;
     flex-wrap: wrap;
-    padding: 20px;
+    padding: 5px 20px;
 }
 
 .restaurant-title {
@@ -16,12 +16,12 @@
     font-size:15px;
 }
 .restaurant-head{
-    font-size: 30px;
+    font-size: 20px;
 }
 
 .btn-secondary {
     background-color: #fff;
-    padding: 3px 10px;
+    padding: 2px 8px;
     text-decoration: none;
     color: #000;
     border-radius: 5px;
@@ -32,7 +32,7 @@
     display: flex;
     flex-direction: column;
     align-items: left;
-    width: 50%;
+    width: 45%;
     height: 100%;
 }
 
@@ -45,7 +45,7 @@
 
 .restaurant-title {
     color: #333;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .reservation-btn {
@@ -66,6 +66,9 @@
     width: 100%;
     max-width: 90%;
     height: auto;
+    object-fit: cover;
+    max-height: 200px;
+
 }
 
 .image-default {
@@ -85,12 +88,12 @@
 
 .tag {
     color: #666;
-    font-size: 16px;
+    font-size: 15px;
 }
 
 .restaurant-detail p {
     color: #666;
-    font-size: 16px;
+    font-size: 15px;
 }
 
 .review-message {
@@ -255,6 +258,92 @@
     width: 100%;
     height: auto;
     max-width: 250px;
+}
+
+
+
+.feedback-info-button {
+    display: inline-block;
+    width: 100%;
+    margin-top: 3px;
+    margin-bottom: 10px;
+    padding: 7px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 15px;
+}
+
+.feedback-info-button:hover {
+    background-color: #0056b3;
+}
+
+.feedback-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.feedback-card {
+    padding: 15px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+.feedback-edit {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.feedback-edit a {
+    color: #666;
+    font-size: 13px;
+}
+
+
+.feedback-rating {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.feedback-stars {
+    font-size: 25px;
+    color: #666;
+}
+
+.feedback-rating .star {
+    margin-right: 2px;
+    color: #666;
+}
+
+.feedback-rating .star.filled {
+    color: #007bff;
+}
+
+
+.feedback-content {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #666;
+}
+
+.add-feedback-link {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.add-feedback-link:hover {
+    text-decoration: underline;
 }
 
 @media (max-width: 768px) {

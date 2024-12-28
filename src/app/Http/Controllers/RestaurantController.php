@@ -9,10 +9,13 @@ use App\Models\Genre;
 use App\Models\Favorite;
 use App\Models\Reservation;
 use App\Models\Review;
+use App\Models\Feedback;
 use App\Http\Controllers\ReservationController;
 use Illuminate\Support\Facades\Storage;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use App\Http\Requests\RestaurantRequest;
+use Illuminate\Support\Facades\Auth;
+
 
 class RestaurantController extends Controller
 {
@@ -92,8 +95,13 @@ class RestaurantController extends Controller
             $qrCode = null;
         }
 
+        //口コミ
+        $feedback = Feedback::where('user_id', Auth::id())
+                    ->where('restaurant_id', $restaurant->id)
+                    ->first();
 
-        return view('detail', compact('restaurant', 'route', 'show', 'qrCode'));
+
+        return view('detail', compact('restaurant', 'route', 'show', 'qrCode','feedback'));
     }
 
     public function search(Request $request)
@@ -118,8 +126,16 @@ class RestaurantController extends Controller
             $query->where('name', 'like', '%' . $request->search . '%');
         }
 
+        //口コミ
+        if (!empty($request->rate)) {
+            $query->with('feedbacks') // フィードバックをロード
+                ->get()
+                ->sortByDesc('average_rate'); // カスタムアクセサを利用してソート
+        }
+
         $restaurants = $query->get();
         $favorites = Favorite::where('user_id', $user->id)->get();
+
 
         return view('list', compact('restaurants','favorites'));
     }

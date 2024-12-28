@@ -10,6 +10,7 @@ use App\Models\Reservations;
 use App\Models\Favorite;
 use App\Models\User;
 use App\Models\Review;
+use App\Models\Feedback;
 
 class Restaurant extends Model
 {
@@ -44,5 +45,26 @@ class Restaurant extends Model
     public function userReview()
     {
         return $this->belongsToMany(User::class, 'reviews', 'restaurant_id', 'user_id');
+    }
+
+    public function feedbacks()
+    {
+        return $this->hasMany(Feedback::class);
+    }
+
+    public function feedbackByUser($userId)
+    {
+        return $this->hasOne(Feedback::class)->where('user_id', $userId);
+    }
+
+    public function getAverageRateAttribute()
+    {
+        // フィードバックがない場合は null を返す
+        if ($this->feedbacks->isEmpty()) {
+            return null;
+        }
+
+        // フィードバックのレートの平均を計算
+        return $this->feedbacks->avg('rate');
     }
 }

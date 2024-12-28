@@ -29,7 +29,6 @@
             <i class="fa-solid fa-image"></i>
         </div>
         @endif
-
         <div class="restaurant-detail">
             @foreach($restaurant->areas as $area)
                 <span class="tag">#{{ $area->name }}</span>
@@ -38,6 +37,38 @@
                 <span class="tag">#{{ $genre->name }}</span>
             @endforeach
             <p>{{ $restaurant->description }}</p>
+        </div>
+        <div class="feedback-section">
+            @if(Auth::user()->auth ==1)
+                <button class="feedback-info-button" onclick="window.location.href='{{ route('feedback.all', $restaurant->id) }}'">全ての口コミ情報</button>
+            @endif
+            @if($feedback != null)
+                <button class="feedback-info-button" onclick="window.location.href='{{ route('feedback.all', $restaurant->id) }}'">全ての口コミ情報</button>
+                <div class="feedback-container">
+                    <div class="feedback-card">
+                        <div class="feedback-edit">
+                            @if(Auth::user()->auth ==3)
+                                <a href="/feedback/update/{{$restaurant->id}}">口コミを編集</a>
+                                <a href="/feedback/delete/{{$restaurant->id}}">口コミを削除</a>
+                            @endif
+                        </div>
+                        <div class="feedback-rating">
+                            <span class="feedback-stars">
+                                @for ($i = 1; $i <= 5; $i++)
+                                    <span class="star {{ $i <= $feedback->rating ? 'filled' : '' }}">★</span>
+                                @endfor
+                            </span>
+                        </div>
+                        <div class="feedback-content">
+                            <p>{{ $feedback->comment }}</p>
+                        </div>
+                    </div>
+                </div>
+            @else
+                @if(Auth::user()->auth ==3)
+                    <a href="/feedback/{{$restaurant->id}}">口コミを投稿する</a>
+                @endif
+            @endif
         </div>
     </div>
     @if($show == 'reservation')

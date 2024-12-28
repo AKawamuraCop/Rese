@@ -73,7 +73,10 @@ html, body {
     flex-direction: column;
     align-items: center;
 }
-
+.modal.is-visible {
+    display: flex;
+    /* 表示状態に切り替え */
+}
 .modal-link {
     font-size: 24px;
     font-weight: bold;

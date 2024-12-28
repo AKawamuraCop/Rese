@@ -50,4 +50,14 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsToMany(Restaurant::class, 'reviews', 'user_id', 'restaurant_id');
     }
 
+    public function feadbacks()
+    {
+        return $this->hasMany(Feedback::class);
+    }
+
+    public function feedbackForRestaurant($restaurantId)
+    {
+        return $this->hasOne(Feedback::class)->where('restaurant_id', $restaurantId);
+    }
+
 }

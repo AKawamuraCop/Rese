@@ -6,6 +6,7 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\FeedbackController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -61,5 +62,11 @@ Route::middleware('auth','verified')->group(function(){
     Route::get('/payment',[PaymentController::class,'getPayment']);
     Route::post('/payment',[PaymentController::class,'postPayment']);
     Route::get('/payment/complete',[PaymentController::class,'completePayment']);
+    Route::get('/feedback/{restaurant_id}',[FeedbackController::class, 'getFeedback']);
+    Route::post('/feedback',[FeedbackController::class, 'postFeedback']);
+    Route::get('/feedback/update/{restaurant_id}',[FeedbackController::class, 'update']);
+    Route::get('/feedback/delete/{restaurant_id}',[FeedbackController::class, 'delete']);
+    Route::get('/restaurant/{restaurantId}/feedbacks', [FeedbackController::class, 'showAllFeedback'])->name('feedback.all');
+Route::delete('/feedback/{feedbackId}/delete', [FeedbackController::class, 'deleteFeedback'])->name('feedback.delete');
 });
 

@@ -8,6 +8,12 @@
 <div class="search-bar">
     <div class="search-bar-box">
     <form action="/search" method="get" class="search-form" id="search-form">
+        <select name="rate" class="search-dropdown" onchange="submitForm()">
+            <option value=""></option>
+            <option value="1" @if(request('rate') == '1') selected @endif>ランダム</option>
+            <option value="2" @if(request('rate') == '2') selected @endif>高い</option>
+            <option value="3" @if(request('rate') == '3') selected @endif>低い</option>
+        </select>
         <select name="area" class="search-dropdown" onchange="submitForm()">
             <option value="">All areas</option>
             <option value="1" @if(request('area') == '1') selected @endif>東京</option>

@@ -160,14 +160,22 @@ return [
         ],
         'number' => [
             'required' => '人数を入力してください',
-            'integer' => '整数を指定してください。',
+            'integer' => '整数を指定してください',
         ],
         'description' => [
             'required' => '店舗説明を入力してください',
         ],
-        'image' => [
-            'required' => '画像をアップロードしてください',
+        'comment' => [
+            'required' => 'コメントを入力してください',
+            'max' => '400文字以下で入力してください',
         ],
+        'rating' => [
+            'required' => '評価をしてください',
+        ],
+        'image' => [
+            'mimes' => 'jpegかpngでアップロードしてください'
+        ],
+
     ],
 
     /*
