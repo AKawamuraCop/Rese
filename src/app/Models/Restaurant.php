@@ -57,14 +57,8 @@ class Restaurant extends Model
         return $this->hasOne(Feedback::class)->where('user_id', $userId);
     }
 
-    public function getAverageRateAttribute()
+    public function scopeAverageRate($query)
     {
-        // フィードバックがない場合は null を返す
-        if ($this->feedbacks->isEmpty()) {
-            return null;
-        }
-
-        // フィードバックのレートの平均を計算
-        return $this->feedbacks->avg('rate');
+        return $query->selectRaw('avg(rating) as average_rate');
     }
 }

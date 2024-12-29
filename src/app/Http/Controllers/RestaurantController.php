@@ -104,41 +104,62 @@ class RestaurantController extends Controller
         return view('detail', compact('restaurant', 'route', 'show', 'qrCode','feedback'));
     }
 
-    public function search(Request $request)
-    {
+public function search(Request $request)
+{
+    $user = auth()->user();
+    $query = Restaurant::with(['areas', 'genres']);
 
-        $user = auth()->user();
-        $query = Restaurant::with(['areas', 'genres']);
-
-        if (!empty($request->area)) {
-            $query->whereHas('areas', function ($q) use ($request) {
-                $q->where('number', $request->area);
-            });
-        }
-
-        if (!empty($request->genre)) {
-            $query->whereHas('genres', function ($q) use ($request) {
-                $q->where('number', $request->genre);
-            });
-        }
-
-        if (!empty($request->search)) {
-            $query->where('name', 'like', '%' . $request->search . '%');
-        }
-
-        //口コミ
-        if (!empty($request->rate)) {
-            $query->with('feedbacks') // フィードバックをロード
-                ->get()
-                ->sortByDesc('average_rate'); // カスタムアクセサを利用してソート
-        }
-
-        $restaurants = $query->get();
-        $favorites = Favorite::where('user_id', $user->id)->get();
-
-
-        return view('list', compact('restaurants','favorites'));
+    if (!empty($request->area)) {
+        $query->whereHas('areas', function ($q) use ($request) {
+            $q->where('number', $request->area);
+        });
     }
+
+    if (!empty($request->genre)) {
+        $query->whereHas('genres', function ($q) use ($request) {
+            $q->where('number', $request->genre);
+        });
+    }
+
+    if (!empty($request->search)) {
+        $query->where('name', 'like', '%' . $request->search . '%');
+    }
+
+    if (!empty($request->rate)) {
+        switch ($request->rate) {
+            case '2': // 高い順
+                $query->leftJoin('feedbacks', 'restaurants.id', '=', 'feedbacks.restaurant_id')
+                      ->selectRaw('restaurants.*, COALESCE(AVG(feedbacks.rating), 0) as avg_rating')
+                      ->groupBy('restaurants.id')
+                      ->orderBy('avg_rating', 'desc');
+                break;
+
+            case '3': // 低い順
+                $query->leftJoin('feedbacks', 'restaurants.id', '=', 'feedbacks.restaurant_id')
+                      ->selectRaw('restaurants.*, COALESCE(AVG(feedbacks.rating), 0) as avg_rating')
+                      ->groupBy('restaurants.id')
+                      ->orderByRaw('avg_rating = 0, avg_rating');
+                break;
+
+            case '1': // ランダム
+                $query->inRandomOrder();
+                break;
+
+            default:
+                // デフォルト
+                break;
+        }
+    }
+
+    $restaurants = $query->get();
+    $favorites = Favorite::where('user_id', $user->id)->get();
+
+    // 現在の検索条件を保持
+    $filters = $request->query();
+
+    return view('list', compact('restaurants', 'favorites', 'filters'));
+}
+
 
     public function getRestaurantRegister()
     {
