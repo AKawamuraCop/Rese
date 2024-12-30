@@ -13,6 +13,7 @@
 <div class="form-header">
     <a href="/restaurant/updateList" class="update-btn">更新はこちらから</a>
 </div>
+<input type="submit">
 <form action="/restaurant/register" method="post" enctype="multipart/form-data" class="restaurant-form">
     @csrf
     <div class="form-group">

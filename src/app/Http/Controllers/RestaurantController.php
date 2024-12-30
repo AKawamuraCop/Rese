@@ -330,4 +330,5 @@ public function search(Request $request)
         return redirect()->back()->with('result', '更新が完了しました');
 
     }
+
 }

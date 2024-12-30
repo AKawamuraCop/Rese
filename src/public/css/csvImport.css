@@ -1,0 +1,68 @@
+/* フラッシュメッセージ */
+.flash_message {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    border: 1px solid #c3e6cb;
+}
+
+/* エラーメッセージ */
+ul {
+    padding-left: 20px;
+    color: #721c24;
+}
+
+ul li {
+    margin-bottom: 5px;
+}
+
+/* フォームの全体スタイル */
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+label {
+    font-size: 16px;
+    margin-bottom: 10px;
+    display: block;
+    font-weight: bold;
+}
+
+/* ファイル入力ボックス */
+input[type="file"] {
+    margin: 10px 0;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 100%;
+    background-color: #f8f9fa;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+input[type="submit"]:active {
+    background-color: #004085;
+}

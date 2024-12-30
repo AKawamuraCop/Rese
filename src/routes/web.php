@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\CsvImportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,6 +68,8 @@ Route::middleware('auth','verified')->group(function(){
     Route::get('/feedback/update/{restaurant_id}',[FeedbackController::class, 'update']);
     Route::get('/feedback/delete/{restaurant_id}',[FeedbackController::class, 'delete']);
     Route::get('/restaurant/{restaurantId}/feedbacks', [FeedbackController::class, 'showAllFeedback'])->name('feedback.all');
-Route::delete('/feedback/{feedbackId}/delete', [FeedbackController::class, 'deleteFeedback'])->name('feedback.delete');
+    Route::delete('/feedback/{feedbackId}/delete', [FeedbackController::class, 'deleteFeedback'])->name('feedback.delete');
+    Route::get('/csv/import',[CsvImportController::class, 'getCsvImport']);
+    Route::post('/csv/import',[CsvImportController::class, 'postCsvImport']);
 });
 

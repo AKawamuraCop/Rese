@@ -61,4 +61,5 @@ class Restaurant extends Model
     {
         return $query->selectRaw('avg(rating) as average_rate');
     }
+
 }
