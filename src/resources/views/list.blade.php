@@ -27,13 +27,12 @@
             <option value="4" @if(request('genre') == '4') selected @endif>寿司</option>
             <option value="5" @if(request('genre') == '5') selected @endif>焼肉</option>
         </select>
-        
         <!-- キーワード検索 -->
         <div class="search-input-container">
             <i class="fa fa-search search-icon"></i>
-            <input type="text" placeholder="Search..." name="search" class="search-input" 
-                   value="{{ request('search') }}" 
-                   onkeydown="if (event.keyCode == 13) { submitForm(); return false; }">
+            <input type="text" placeholder="Search..." name="search" class="search-input"
+                value="{{ request('search') }}" 
+                onkeydown="if (event.keyCode == 13) { submitForm(); return false; }">
         </div>
     </form>
 </div>
@@ -43,8 +42,8 @@
         @foreach($restaurants as $restaurant)
         <div class="restaurant-card">
             @if($restaurant->image)
-                <img src="{{ preg_match('/^http/', $restaurant->image) ? $restaurant->image : asset($restaurant->image) }}" 
-                     alt="Restaurant Image" class="restaurant-card__image">
+                <img src="{{ preg_match('/^http/', $restaurant->image) ? $restaurant->image : asset($restaurant->image) }}"
+                    alt="Restaurant Image" class="restaurant-card__image">
             @else
             <div class="image-default">
                 <i class="fa-solid fa-image"></i>

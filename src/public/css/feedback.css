@@ -1,11 +1,11 @@
 
 .container {
-    max-width: 900px;
+    max-width: 90%;
     border-radius: 10px;
     overflow: hidden;
     display: flex;
     flex-direction: row;
-    padding: 20px;
+    padding: 10px;
     margin: 0 auto;
 }
 
@@ -18,14 +18,20 @@
 
 .left-section {
     flex: 1;
-    text-align: center;
-    padding: 20px;
-    border-right: 1px solid #ddd;
+        /* 比率を1に設定 */
+        max-width: 50%;
+        /* 最大幅を制限 */
+        text-align: center;
+        padding-right: 40px;
+        /* 余白を適度に調整 */
+        border-right: 1px solid #ddd;
+        box-sizing: border-box;
 }
 
 .left-section h2 {
-    font-size: 24px;
+    font-size: 35px;
     margin-bottom: 20px;
+    font-weight: lighter;
 }
 
 .restaurant-card {
@@ -34,7 +40,7 @@
     border-radius: 8px;
     display: inline-block;
     text-align: left;
-    width: 100%;
+    width: 90%;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -66,7 +72,6 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-   
 }
 
 .details-button {
@@ -84,13 +89,16 @@
 }
 
 .right-section {
-    flex: 1.5;
-    padding: 20px;
+    flex: 1;
+        max-width: 100%;
+        /* 最大幅を制限 */
+        box-sizing: border-box;
 }
 
 .review-form h3 {
     font-size: 20px;
     margin-bottom: 10px;
+    font-weight: lighter;
 }
 
 .rating {
@@ -153,7 +161,17 @@ input[type="file"] {
     transition: background-color 0.3s ease;
     background-color: white;
 }
+.char-count {
+    text-align: right;
+    font-size: 12px;
+    color: #666;
+}
+.counnt-max{
+    text-align: right;
+    font-size: 12px;
+    color: #666;
 
+}
 .preview-image,
 .current-image {
     max-width: 100%;
@@ -168,9 +186,11 @@ input[type="file"] {
 .upload-click
 {
     font-size: 20px;
+    color: #666;
 }
 .upload-drop {
     font-size: 15px;
+    color: #666;
 }
 .image-upload-area:hover {
     background-color: #f0f8ff;
@@ -205,12 +225,98 @@ input[type="file"] {
 
 @media (max-width: 768px) {
     .container {
-        flex-direction: column;
+        flex-direction: row;
+        /* Keep horizontal layout */
+        padding: 10px;
     }
 
-    .left-section {
-        border-right: none;
-        border-bottom: 1px solid #ddd;
-        margin-bottom: 20px;
+    .review-wrapper {
+        flex-direction: row;
+        /* Keep items in row */
+        gap: 10px;
+    }
+
+    .left-section,
+    .right-section {
+        flex: 1;
+        max-width: 100%;
+        /* Ensure they don't overflow */
+    }
+
+    .restaurant-card {
+        width: 100%;
+        /* Scale card to full width */
+        font-size: 90%;
+        /* Slightly reduce the font size */
+    }
+
+    .restaurant-image img {
+        max-height: 150px;
+        /* Adjust image size */
+    }
+
+    .restaurant-title {
+        font-size: 20px;
+        /* Reduce title size */
+    }
+
+    .restaurant-tag {
+        font-size: 0.8rem;
+        /* Reduce tag font size */
+    }
+
+    .details-button {
+        padding: 8px 15px;
+        /* Adjust button size */
+        font-size: 14px;
+        /* Adjust button text size */
+    }
+
+    .right-section {
+        padding: 10px;
+        font-size: 14px;
+        /* Adjust font size */
+    }
+
+    .review-form h3 {
+        font-size: 18px;
+        /* Smaller heading */
+    }
+
+    .rating label {
+        font-size: 25px;
+        /* Slightly reduce star size */
+    }
+
+    .review-area {
+        height: 80px;
+        padding: 8px;
+    }
+
+    .form-group {
+        margin-top: 15px;
+    }
+
+    .image-upload-area {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .upload-click {
+        font-size: 18px;
+    }
+
+    .upload-drop {
+        font-size: 14px;
+    }
+
+    .preview-image,
+    .current-image {
+        max-height: 200px;
+    }
+
+    .submit-button {
+        font-size: 14px;
+        padding: 8px;
     }
 }

@@ -66,7 +66,7 @@
                 </div>
             @else
                 @if(Auth::user()->auth ==3)
-                    <a href="/feedback/{{$restaurant->id}}">口コミを投稿する</a>
+                    <a class="feedback-link" href="/feedback/{{$restaurant->id}}">口コミを投稿する</a>
                 @endif
             @endif
         </div>

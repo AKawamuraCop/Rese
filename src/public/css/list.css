@@ -189,9 +189,16 @@
         width: 100%;
     }
 
+    .order-dropdown{
+        width: 100%;
+        margin-bottom: 10px;
+        margin-right: 0px;
+    }
+
     .search-dropdown {
         width: 100%;
         margin-bottom: 10px;
+        
     }
 
     .search-input-container {

@@ -185,6 +185,11 @@
 .reservation-form button:hover {
     background-color: #003570;
 }
+
+.feedback-link
+{
+    color: #666;
+}
 #summary p {
     margin: 10px 0;
 }
@@ -442,4 +447,10 @@
         height: auto;
         max-width: 250px;
     }
+
+    .feedback-stars {
+        font-size: 20px;
+        color: #666;
+    }
+
 }

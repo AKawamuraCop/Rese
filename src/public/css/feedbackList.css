@@ -64,3 +64,42 @@
 .delete-button:focus {
     outline: none;
 }
+
+@media (max-width: 768px) {
+
+    /* 口コミリスト全体の幅を調整 */
+    .feedback-list {
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: none;
+    }
+
+    /* タイトルのフォントサイズを調整 */
+    .feedback-list h2 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+
+    /* 口コミアイテムの余白とフォントサイズを調整 */
+    .feedback-item {
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 4px;
+    }
+
+    /* 星のフォントサイズを調整 */
+    .feedback-stars {
+        font-size: 18px;
+    }
+
+    /* コメントのフォントサイズを調整 */
+    .feedback-content p {
+        font-size: 14px;
+    }
+
+    /* 削除ボタンのサイズを調整 */
+    .delete-button {
+        padding: 6px 10px;
+        font-size: 14px;
+    }
+}
