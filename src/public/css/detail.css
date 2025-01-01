@@ -186,6 +186,27 @@
     background-color: #003570;
 }
 
+button.update-button,
+button.delete-button {
+    background: none;
+    /* 背景を削除 */
+    border: none;
+    /* ボーダーを削除 */
+    color: #666;
+    /* リンクの色（青） */
+    text-decoration: underline;
+    /* アンダーラインを追加 */
+    font-size: 14px;
+    /* フォントサイズ */
+    cursor: pointer;
+    /* ポインターを手のひらに変更 */
+    padding: 0;
+    /* パディングをゼロにして余白をなくす */
+    font-family: inherit;
+    /* 親要素のフォントを継承 */
+}
+
+
 .feedback-link
 {
     color: #666;

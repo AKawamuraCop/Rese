@@ -80,9 +80,19 @@ class FeedbackController extends Controller
                     'image' => $imagePath
             ]);
             }
+            
+ 
         }
 
-        return view('detail',compact('restaurant', 'route','show', 'qrCode','feedback'));
+        return redirect()->route('restaurant.detail', ['restaurant_id' => $restaurantId])
+        ->with([
+            'route' => $route,
+            'show' => $show,
+            'qrCode' => $qrCode,
+            'feedback' => $feedback,
+        ]);
+
+    
     }
 
     public function update($restaurant_id)
@@ -99,32 +109,33 @@ class FeedbackController extends Controller
                     ->where('user_id', Auth::id())
                     ->first();
 
-        return view('feedback',compact('restaurant','favorites','feedback'));
-
-    }
-
-    public function delete($restaurant_id)
-    {
-        $restaurant = Restaurant::with(['areas', 'genres'])
-                    ->where('id' ,$restaurant_id)->first();
-        $favorites = Favorite::
-            where('user_id', Auth::id())
-            ->where('restaurant_id', $restaurant_id)
-            ->first();
-
-        $feedback = Feedback::
-                    where('restaurant_id', $restaurant_id)
-                    ->where('user_id', Auth::id())
-                    ->first();
-        if($feedback)
-        {
-            $feedback->delete();
-            $feedback = null;
-        }
 
         return view('feedback',compact('restaurant','favorites','feedback'));
 
     }
+
+    // public function delete($restaurant_id)
+    // {
+    //     $restaurant = Restaurant::with(['areas', 'genres'])
+    //                 ->where('id' ,$restaurant_id)->first();
+    //     $favorites = Favorite::
+    //         where('user_id', Auth::id())
+    //         ->where('restaurant_id', $restaurant_id)
+    //         ->first();
+
+    //     $feedback = Feedback::
+    //                 where('restaurant_id', $restaurant_id)
+    //                 ->where('user_id', Auth::id())
+    //                 ->first();
+    //     if($feedback)
+    //     {
+    //         $feedback->delete();
+    //         $feedback = null;
+    //     }
+
+    //     return view('feedback',compact('restaurant','favorites','feedback'));
+
+    // }
 
     public function showAllFeedback($restaurantId)
 {
@@ -140,11 +151,15 @@ public function deleteFeedback($feedbackId)
 {
     $feedback = Feedback::find($feedbackId);
     
-    if ($feedback && $feedback->user_id == Auth::id()) {
+    if (Auth::user()->auth == 1) {
         $feedback->delete();
+    } else if ($feedback && $feedback->user_id == Auth::id()) {
+    
+    $feedback->delete();
     }
 
-    return redirect()->back()->with('success', '口コミが削除されました');
+    return redirect()->back()->with('msg', '口コミが削除されました');
 }
+
 
 }

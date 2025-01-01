@@ -41,7 +41,7 @@ Route::get('/',[AuthController::class,'getLogin']);
 Route::middleware('auth','verified')->group(function(){
     Route::get('/logout', [AuthController::class,'getLogout']);
     Route::get('/list',[RestaurantController::class,'getList']);
-    Route::get('/restaurant/detail',[RestaurantController::class,'getDetail']);
+    Route::get('/restaurant/detail',[RestaurantController::class,'getDetail'])->name('restaurant.detail');
     Route::get('/search', [RestaurantController::class,'search']);
     Route::post('/reserve', [ReservationController::class,'store']);
     Route::get('/mypage',[MypageController::class,'show']);
@@ -66,9 +66,8 @@ Route::middleware('auth','verified')->group(function(){
     Route::get('/feedback/{restaurant_id}',[FeedbackController::class, 'getFeedback']);
     Route::post('/feedback',[FeedbackController::class, 'postFeedback']);
     Route::get('/feedback/update/{restaurant_id}',[FeedbackController::class, 'update']);
-    Route::get('/feedback/delete/{restaurant_id}',[FeedbackController::class, 'delete']);
-    Route::get('/restaurant/{restaurantId}/feedbacks', [FeedbackController::class, 'showAllFeedback'])->name('feedback.all');
-    Route::delete('/feedback/{feedbackId}/delete', [FeedbackController::class, 'deleteFeedback'])->name('feedback.delete');
+    Route::post('/feedback/delete/{id}',[FeedbackController::class, 'deleteFeedback']);
+    Route::get('/restaurant/feedback/{restaurantId}', [FeedbackController::class, 'showAllFeedback']);
     Route::get('/csv/import',[CsvImportController::class, 'getCsvImport']);
     Route::post('/csv/import',[CsvImportController::class, 'postCsvImport']);
 });

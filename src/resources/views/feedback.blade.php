@@ -5,6 +5,11 @@
 @endsection
 
 @section('content')
+@if (session('msg'))
+<div class="flash_message">
+    {{ session('msg') }}
+</div>
+@endif
 <div class="container">
     <div class="review-wrapper">
         <div class="left-section">

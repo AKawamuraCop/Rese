@@ -5,6 +5,11 @@
 @endsection
 
 @section('content')
+@if (session('msg'))
+<div class="flash_message">
+    {{ session('msg') }}
+</div>
+@endif
     <div class="feedback-list">
         <h2>口コミ情報</h2>
 
@@ -24,9 +29,8 @@
                     <p>{{ $feedback->comment }}</p>
                 </div>
                 @if(Auth::user()->auth == 1)
-                    <form action="{{ route('feedback.delete', $feedback->id) }}" method="POST" style="display:inline;">
+                    <form action="/feedback/delete/{{ $feedback->id }}" method="POST" style="display:inline;">
                         @csrf
-                        @method('DELETE')
                         <button type="submit" class="delete-button">口コミを削除</button>
                     </form>
                 @endif

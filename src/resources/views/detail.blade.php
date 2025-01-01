@@ -40,16 +40,25 @@
         </div>
         <div class="feedback-section">
             @if(Auth::user()->auth ==1)
-                <button class="feedback-info-button" onclick="window.location.href='{{ route('feedback.all', $restaurant->id) }}'">全ての口コミ情報</button>
+            <form action="/restaurant/feedback/{{$restaurant->id}}" method="GET">
+                <button class="feedback-info-button">全ての口コミ情報</button>
+            </form>
             @endif
             @if($feedback != null)
-                <button class="feedback-info-button" onclick="window.location.href='{{ route('feedback.all', $restaurant->id) }}'">全ての口コミ情報</button>
+                <form action="/restaurant/feedback/{{$restaurant->id}}" method="GET">
+                    <button class="feedback-info-button">全ての口コミ情報</button>
+                </form>
                 <div class="feedback-container">
                     <div class="feedback-card">
                         <div class="feedback-edit">
                             @if(Auth::user()->auth ==3)
-                                <a href="/feedback/update/{{$restaurant->id}}">口コミを編集</a>
-                                <a href="/feedback/delete/{{$restaurant->id}}">口コミを削除</a>
+                                <form action="/feedback/update/{{$restaurant->id}}" method="GET" style="display: inline;">
+                                    <button type="submit" class="update-button">口コミを編集</button>
+                                </form>
+                                <form action="/feedback/delete/{{$feedback->id}}" method="POST" style="display: inline;">
+                                    @csrf
+                                    <button type="submit" class="delete-button">口コミを削除</button>
+                                </form>
                             @endif
                         </div>
                         <div class="feedback-rating">
