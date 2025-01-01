@@ -221,7 +221,7 @@ private function validateEmptyCells($row, $rowIndex, &$errors)
 {
     foreach ($row as $colIndex => $cell) {
         if (empty($cell)) {
-            $errors[] = "行 " . ($rowIndex + 1) . "、列 " . ($colIndex + 1) . " に空欄があります。";
+            $errors[] = "行 " . ($rowIndex + 2) . "、列 " . ($colIndex + 1) . " に空欄があります。";
         }
     }
 }
@@ -231,12 +231,12 @@ private function validateEmptyCells($row, $rowIndex, &$errors)
     {
         // nameのバリデーション
         if (mb_strlen($row[0]) > 50) {
-            throw new Exception("Error: {$lineNumber}行目の名前が50文字を超えています");
+            throw new Exception("Error: {$lineNumber}行目の店舗名が50文字を超えています");
         }
 
         // descriptionのバリデーション
         if (mb_strlen($row[1]) > 400) {
-            throw new Exception("Error: {$lineNumber}行目の説明が400文字を超えています");
+            throw new Exception("Error: {$lineNumber}行目の店舗概要が400文字を超えています");
         }
 
         // 画像形式のバリデーション
@@ -272,12 +272,12 @@ private function validateEmptyCells($row, $rowIndex, &$errors)
         // areaのバリデーション
         $validAreas = ['東京都', '大阪府', '福岡県'];
         if (!in_array($row[3], $validAreas)) {
-            throw new Exception("Error: {$lineNumber}行目のエリア名「{$row[3]}」が無効です");
+            throw new Exception("Error: {$lineNumber}行目の地域：「{$row[3]}」が無効です");
         }
 
         $validGenres = ['イタリアン', 'ラーメン', '居酒屋','寿司','焼肉'];
         if (!in_array($row[4], $validGenres)) {
-            throw new Exception("Error: {$lineNumber}行目のエリア名「{$row[4]}」が無効です");
+            throw new Exception("Error: {$lineNumber}行目のジャンル：「{$row[4]}」が無効です");
         }
     }
 }

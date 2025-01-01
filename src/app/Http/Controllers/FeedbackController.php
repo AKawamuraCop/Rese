@@ -84,13 +84,22 @@ class FeedbackController extends Controller
  
         }
 
-        return redirect()->route('restaurant.detail', ['restaurant_id' => $restaurantId])
-        ->with([
+ 
+        // return redirect()->route('restaurant.detail', ['restaurant_id' => $restaurantId])
+        // ->with([
+        //     'route' => $route,
+        //     'show' => $show,
+        //     'qrCode' => $qrCode,
+        //     'feedback' => $feedback,
+        // ]);
+
+        return redirect()->route('restaurant.detail', ['restaurant_id' => $restaurantId,
             'route' => $route,
             'show' => $show,
             'qrCode' => $qrCode,
             'feedback' => $feedback,
         ]);
+
 
     
     }

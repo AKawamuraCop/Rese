@@ -39,7 +39,7 @@
             <p>{{ $restaurant->description }}</p>
         </div>
         <div class="feedback-section">
-            @if(Auth::user()->auth ==1)
+            @if(Auth::user()->auth ==1 || Auth::user()->auth ==2)
             <form action="/restaurant/feedback/{{$restaurant->id}}" method="GET">
                 <button class="feedback-info-button">全ての口コミ情報</button>
             </form>

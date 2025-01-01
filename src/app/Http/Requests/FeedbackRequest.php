@@ -22,9 +22,9 @@ class FeedbackRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'comment' => 'required','max:400',
+            'comment' => 'required|max:400',
             'rating' => 'required',
-            'image' => 'image','mimes:jpeg,png',
+            'image' => 'image|mimes:jpeg,png',
         ];
     }
 }
