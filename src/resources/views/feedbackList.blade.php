@@ -28,6 +28,13 @@
                 <div class="feedback-content">
                     <p>{{ $feedback->comment }}</p>
                 </div>
+                <div class="feedback-image">
+                    @if($feedback->image)
+                    <img src="{{ preg_match('/^http/', $feedback->image) ? $feedback->image : asset($feedback->image) }}"
+                    alt="feedback Image" class="feedback-image">
+                    @endif
+                </div>
+
                 @if(Auth::user()->auth == 1)
                     <form action="/feedback/delete/{{ $feedback->id }}" method="POST" style="display:inline;">
                         @csrf

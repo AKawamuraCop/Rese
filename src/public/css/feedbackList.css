@@ -65,6 +65,16 @@
     outline: none;
 }
 
+/* 画像のスタイル */
+.feedback-image img {
+    max-width: 50%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 @media (max-width: 768px) {
 
     /* 口コミリスト全体の幅を調整 */
@@ -102,4 +112,10 @@
         padding: 6px 10px;
         font-size: 14px;
     }
+
+    .feedback-image img {
+        max-width: 100%;
+        height: auto;
+
+                }
 }
