@@ -122,11 +122,23 @@ php artisan migrate
 php artisan db:seed
 ```
 
+9. 画像保存用フォルダ作成  
+
+```
+mkdir Rese/src/storage/app/public/images
+```
+
+10. 保存した画像へのアクセスの許可  
+
+```
+php artisan storage:link
+```
+
 ## アカウントの種類
 
 テストユーザー  
 店舗代表者  
-管理者
+管理者  
 
 ## URL
 
@@ -149,11 +161,7 @@ _csv ファイル記述方法_
 　 4 カラム目:地域  
 　 5 カラム目:ジャンル
 
-・画像はインターネット上に存在する画像ファイルを保存しています。画像 URL は"https://"から始まる理、末が.jpg で終わる URL を指定してください。(例：https://cdn.sbfoods.co.jp/recipes/09711_l.jpg)
-・記述内容は画像を参照ください。
-・画像は、public/images に保存されます。アクセス可能にするために以下コマンドを実行してください。
-
-```
-php artisan storage:link
-
-```
+・画像はインターネット上に存在する画像ファイルを保存しています。  
+画像 URL は"https://"から始まる理、末が.jpg で終わる URL を指定してください。(例：https://cdn.sbfoods.co.jp/recipes/09711_l.jpg)  
+・記述内容は画像を参照ください。  
+・画像は、public/images に保存されます。

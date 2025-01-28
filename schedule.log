@@ -18641,3 +18641,196 @@ Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unkn
 
    INFO  No scheduled commands are ready to run.  
 
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+Cannot connect to the Docker daemon at unix:///Users/coco/.docker/run/docker.sock. Is the docker daemon running?
+Cannot connect to the Docker daemon at unix:///Users/coco/.docker/run/docker.sock. Is the docker daemon running?
+Cannot connect to the Docker daemon at unix:///Users/coco/.docker/run/docker.sock. Is the docker daemon running?
+Cannot connect to the Docker daemon at unix:///Users/coco/.docker/run/docker.sock. Is the docker daemon running?
+Cannot connect to the Docker daemon at unix:///Users/coco/.docker/run/docker.sock. Is the docker daemon running?
+Error response from daemon: container f91e0550196a938027ecf7f51a6495695f3bcf383a0b3efc791ac6d0697e5388 is not running
+Error response from daemon: container f91e0550196a938027ecf7f51a6495695f3bcf383a0b3efc791ac6d0697e5388 is not running
+Error response from daemon: container f91e0550196a938027ecf7f51a6495695f3bcf383a0b3efc791ac6d0697e5388 is not running
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+Error response from daemon: container f91e0550196a938027ecf7f51a6495695f3bcf383a0b3efc791ac6d0697e5388 is not running
+Error response from daemon: container f91e0550196a938027ecf7f51a6495695f3bcf383a0b3efc791ac6d0697e5388 is not running
+Error response from daemon: container f91e0550196a938027ecf7f51a6495695f3bcf383a0b3efc791ac6d0697e5388 is not running
+Error response from daemon: container f91e0550196a938027ecf7f51a6495695f3bcf383a0b3efc791ac6d0697e5388 is not running
+Error response from daemon: container f91e0550196a938027ecf7f51a6495695f3bcf383a0b3efc791ac6d0697e5388 is not running
+Error response from daemon: container f91e0550196a938027ecf7f51a6495695f3bcf383a0b3efc791ac6d0697e5388 is not running
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+Warning: require(/var/www/vendor/autoload.php): Failed to open stream: No such file or directory in /var/www/artisan on line 18
+
+Fatal error: Uncaught Error: Failed opening required '/var/www/vendor/autoload.php' (include_path='.:/usr/local/lib/php') in /var/www/artisan:18
+Stack trace:
+#0 {main}
+  thrown in /var/www/artisan on line 18
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+Warning: require(/var/www/vendor/autoload.php): Failed to open stream: No such file or directory in /var/www/artisan on line 18
+
+Fatal error: Uncaught Error: Failed opening required '/var/www/vendor/autoload.php' (include_path='.:/usr/local/lib/php') in /var/www/artisan:18
+Stack trace:
+#0 {main}
+  thrown in /var/www/artisan on line 18
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+Warning: require(/var/www/vendor/autoload.php): Failed to open stream: No such file or directory in /var/www/artisan on line 18
+
+Fatal error: Uncaught Error: Failed opening required '/var/www/vendor/autoload.php' (include_path='.:/usr/local/lib/php') in /var/www/artisan:18
+Stack trace:
+#0 {main}
+  thrown in /var/www/artisan on line 18
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+Warning: require(/var/www/vendor/autoload.php): Failed to open stream: No such file or directory in /var/www/artisan on line 18
+
+Fatal error: Uncaught Error: Failed opening required '/var/www/vendor/autoload.php' (include_path='.:/usr/local/lib/php') in /var/www/artisan:18
+Stack trace:
+#0 {main}
+  thrown in /var/www/artisan on line 18
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+Warning: require(/var/www/vendor/autoload.php): Failed to open stream: No such file or directory in /var/www/artisan on line 18
+
+Fatal error: Uncaught Error: Failed opening required '/var/www/vendor/autoload.php' (include_path='.:/usr/local/lib/php') in /var/www/artisan:18
+Stack trace:
+#0 {main}
+  thrown in /var/www/artisan on line 18
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+Warning: require(/var/www/vendor/autoload.php): Failed to open stream: No such file or directory in /var/www/artisan on line 18
+
+Fatal error: Uncaught Error: Failed opening required '/var/www/vendor/autoload.php' (include_path='.:/usr/local/lib/php') in /var/www/artisan:18
+Stack trace:
+#0 {main}
+  thrown in /var/www/artisan on line 18
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
+
+Deprecated: PHP Startup: Use of mbstring.internal_encoding is deprecated in Unknown on line 0
+
+   INFO  No scheduled commands are ready to run.  
+
